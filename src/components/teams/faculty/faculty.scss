@@ -1,0 +1,43 @@
+@import '../../../main.scss';
+
+.faculty {
+    @include themify($themes) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 30px;
+
+        h2 {
+            font-weight: 600;
+            font-size: 40px;
+            color: themed('textColor');
+
+        }
+
+        .details {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: row;
+            gap: 50px;
+
+            img {
+                height: 400px;
+                width: 400px;
+                border-radius: 40px;
+                align-items: center;
+                z-index: 2;
+
+            }
+
+            span {
+                color: themed('textColor');
+                font-weight: 500;
+                font-size: 40px;
+
+            }
+        }
+    }
+}

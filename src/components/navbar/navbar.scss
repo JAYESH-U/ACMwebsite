@@ -1,0 +1,49 @@
+@import '../../main.scss';
+
+.navbar {
+    @include themify($themes) {
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 50px;
+        z-index: 999;
+        background-color: themed("bg");
+        border-bottom: 1px solid themed('border');
+
+        .left {
+            flex: 6;
+
+            img {
+                height: 80px;
+                width: 80px;
+                object-fit: cover;
+
+            }
+        }
+
+        .center {
+            display: flex;
+            flex: 6;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 50px;
+
+            span {
+                font-weight: 600;
+                font-size: 20px;
+                color: themed('textColor');
+                display: flex;
+                align-items: center;
+
+                &:hover {
+                    color: gray;
+                }
+
+            }
+
+
+        }
+    }
+}
