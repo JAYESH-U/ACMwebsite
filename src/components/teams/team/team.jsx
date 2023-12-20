@@ -16,7 +16,7 @@ function Team({ category , values }) {
             {teams.list.map(member =>(
                 <div className="gov" key={member.id}>
                     <img src={member.img} alt="" />
-                    <h3><span>{member.post} : </span>{member.name}</h3>
+                    <h3>{member.post && <span>{member.post} : </span>}{member.name}</h3>
                 </div>
             ))}
             </div>
