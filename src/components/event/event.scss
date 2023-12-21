@@ -1,0 +1,80 @@
+@import '../../main.scss';
+
+.event {
+    @include themify($themes) {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        margin: 20px;
+        padding: 20px;
+        // background: themed(card);
+        border: 1px solid themed('border');
+        border-radius: 20px;
+        gap: 20px;
+
+
+        img {
+            height: 400px;
+            width: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+
+        }
+
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            
+
+            .description1 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+                width: 100%;
+
+                h3 {
+                    color: themed('textColor');
+                    font-size: 25px;
+                    font-weight: 600;
+
+                }
+
+                p {
+                    color: themed('textColorSoft');
+                    font-weight: 500;
+
+                }
+
+            }
+
+            .description2 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 5px;
+
+
+                span {
+                    color: themed('textColorSoft');
+                    font-weight: 500;
+                }
+
+                .eventLink {
+                    border: 1px solid themed('logo');
+                    color: themed('textColor');
+                    font-weight: 500;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+
+            }
+        }
+    }
+}

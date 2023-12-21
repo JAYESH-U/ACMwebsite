@@ -1,7 +1,8 @@
 import React from 'react';
 import './teams.scss';
 import pic from '../../assets/dummyImage.png';
-import Team from './team/team';
+import Team from '../../components/teams/team/Team';
+import Faculty from '../../components/teams/faculty/Faculty';
 
 function Teams() {
 
@@ -87,7 +88,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 10,
+            id: 24,
             name: 'Aditya K',
             post: 'Marketing head',
             category: 'Marketing Team',
@@ -95,7 +96,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 10,
+            id: 11,
             name: 'Dhiral Sharma',
             post: '',
             category: 'Marketing Team',
@@ -103,7 +104,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 11,
+            id: 12,
             name: 'Mrunal Pai',
             post: 'Public relations head',
             category: 'Public Relations Team',
@@ -111,7 +112,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 12,
+            id: 13,
             name: 'Arnav Siddannavar',
             post: 'Public relations head',
             category: 'Public Relations Team',
@@ -119,7 +120,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 13,
+            id: 14,
             name: 'Sakshi Pattanashetti',
             post: '',
             category: 'Public Relations Team',
@@ -127,7 +128,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 14,
+            id: 15,
             name: 'Shreyas Huddar',
             post: 'Management Head',
             category: 'Management Team',
@@ -135,7 +136,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 15,
+            id: 16,
             name: 'Nikhil Kulkarni',
             post: 'Management Head',
             category: 'Management Team',
@@ -143,7 +144,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 16,
+            id: 17,
             name: 'Asadkhan Ustad',
             post: '',
             category: 'Management Team',
@@ -151,7 +152,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 17,
+            id: 18,
             name: 'Yash Kulkarni',
             post: 'Graphics Head',
             category: 'Graphics Team',
@@ -159,7 +160,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 18,
+            id: 19,
             name: 'Ayush Anand',
             post: 'Graphics Head',
             category: 'Graphics Team',
@@ -167,7 +168,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 19,
+            id: 20,
             name: 'Yashaswini Sukhasare',
             post: '',
             category: 'Graphics Team',
@@ -175,7 +176,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 20,
+            id: 21,
             name: 'Sherya Masti',
             post: 'Content Writers Head',
             category: 'Content Writers Team',
@@ -183,7 +184,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 21,
+            id: 22,
             name: 'Achala Rao',
             post: 'Content Writers Head',
             category: 'Content Writers Team',
@@ -191,7 +192,7 @@ function Teams() {
             img: pic
         },
         {
-            id: 21,
+            id: 23,
             name: 'Prathamesh Magadum',
             post: '',
             category: 'Content Writers Team',
@@ -244,15 +245,19 @@ function Teams() {
 
     return (
         <>
-            <div className="teams">
-                <Team values={{category: "Governing Body", list: govList}}/>
-                <Team values={{category: "Web Team", list: webList}}/>
-                <Team values={{category: "Tech Team", list: techList}}/>
-                <Team values={{category: "Graphic Designers Team", list: graphicList}}/>
-                <Team values={{category: "Public relations Team", list: publicList}}/>
-                <Team values={{category: "Marketing Team", list: marketList}}/>
-                <Team values={{category: "Management Team", list: managementList}}/>
-                <Team values={{category: "Content writers Team", list: contentList}}/>
+            <div className="bod">
+                <h1>ACM student chapter 2023-34</h1>
+                <Faculty />
+                <div className="teams">
+                    <Team values={{ category: "Governing Body", list: govList }} />
+                    <Team values={{ category: "Web Team", list: webList }} />
+                    <Team values={{ category: "Tech Team", list: techList }} />
+                    <Team values={{ category: "Graphic Designers Team", list: graphicList }} />
+                    <Team values={{ category: "Public relations Team", list: publicList }} />
+                    <Team values={{ category: "Marketing Team", list: marketList }} />
+                    <Team values={{ category: "Management Team", list: managementList }} />
+                    <Team values={{ category: "Content writers Team", list: contentList }} />
+                </div>
             </div>
         </>
     );

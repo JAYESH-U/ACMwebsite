@@ -27,10 +27,12 @@
 
             .gov {
                 display: flex;
+                flex-wrap: wrap;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 20px;
+                margin: 10px;
+                gap:10px;
 
 
                 img {
@@ -43,6 +45,8 @@
 
                 h3 {
                     color: themed('textColor');
+                    width: 100%;
+                    text-align: center;
 
 
                     span {

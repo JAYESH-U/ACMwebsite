@@ -1,0 +1,19 @@
+@import '../../main.scss';
+
+.bod {
+    @include themify($themes) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: themed('bg');
+
+        h1 {
+            padding: 40px;
+            font-size: 50px;
+            color: themed('textColorSoft');
+
+
+        }
+    }
+}

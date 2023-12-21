@@ -3,7 +3,7 @@ import './team.scss';
 
 function Team({ category , values }) {
 // function Govbod({ values }) {
-    // console.log("values : ",values.govList);
+    // console.log("values : ",values.list);
     
     const { category: teamCategory, ...teams } = values;
     console.log('category : ', teamCategory);

@@ -5,7 +5,7 @@ import { DarkModeContextProvider } from './context/DarkModeContext';
 
 import Home from './pages/home/home';
 import About from './pages/about/About';
-import Teams from './pages/team/Team';
+import Teams from './pages/teams/Teams';
 import Events from './pages/events/Events';
 import Support from './pages/support/Support';
 

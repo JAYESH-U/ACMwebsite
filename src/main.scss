@@ -31,6 +31,7 @@ $themes: (
         bgSoft: #f6f3f3,
         textColorSoft: #555,
         border: lightgray,
+        card: linear-gradient(to right, #cadef8, #dbedf8),
     ),
     dark: (
 		textColor: whitesmoke,
@@ -39,6 +40,7 @@ $themes: (
         bgSoft: #333,
         textColorSoft: gray,
         border: #444,
+        card: lightsteelblue,
     ),
 );
 
