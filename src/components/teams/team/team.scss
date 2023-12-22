@@ -68,10 +68,10 @@
                         position: absolute;
                         top: 0;
                         right: -101%;
-                        background: #689be238;
+                        background: themed('cardOverlay');
                         backdrop-filter: blur(5px);
                         border-radius: 20px;
-                        color: themed('textColor');
+                        color: themed('cardText');
                         box-sizing: border-box;
                         padding: 20px;
                         display: flex;
@@ -84,15 +84,14 @@
                         .memberName {
                             text-transform: uppercase;
                             font-size: 30px;
-                            font-weight: 500;
+                            font-weight: 600;
 
                         }
 
                         .memberPost {
                             text-transform: capitalize;
                             font-size: 20px;
-                            font-weight: 300;
-                            color: themed('card');
+                            font-weight: 200;
 
                         }
 

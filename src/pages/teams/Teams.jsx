@@ -1,6 +1,7 @@
 import React from 'react';
 import './teams.scss';
-import pic from '../../assets/dummyImage.png';
+import pic from '../../assets/me.jpg';
+// import pic from '../../assets/dummyImage.png';
 import Team from '../../components/teams/team/Team';
 import Faculty from '../../components/teams/faculty/Faculty';
 
