@@ -2,6 +2,13 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
 ::-webkit-scrollbar {
@@ -10,7 +17,7 @@
 
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
-    border-radius:10px ;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -24,8 +31,7 @@
 }
 
 $themes: (
-    light: (
-		textColor: #1d266c,
+    light: (textColor: #1d266c,
         bg: white,
         logo: darkblue,
         bgSoft: #f6f3f3,
@@ -33,8 +39,7 @@ $themes: (
         border: lightgray,
         card: linear-gradient(to right, #cadef8, #dbedf8),
     ),
-    dark: (
-		textColor: whitesmoke,
+    dark: (textColor: whitesmoke,
         bg: #222,
         logo: white,
         bgSoft: #333,
@@ -47,35 +52,35 @@ $themes: (
 @mixin themify($themes) {
     @each $theme, $map in $themes {
         .theme-#{$theme} & {
-            $theme-map: () !global;
+            $theme-map: (
+                ) !global;
 
             @each $key, $submap in $map {
-                $value : map-get(map-get($themes, $theme), "#{$key}");
-                $theme-map: map-merge(
-                    $theme-map,
-                    (
-                        $key: $value,
-                    )
-                ) !global;
-            }
-            @content;
-            $theme-map: null !global;
+                $value : map-get(map-get($themes, $theme), "#{$key}"
+            );
+            $theme-map: map-merge($theme-map,
+                    ($key: $value,
+                    )) !global;
         }
+
+        @content;
+        $theme-map: null !global;
     }
 }
+}
 
-@function themed($key){
+@function themed($key) {
     @return map-get($theme-map, $key);
 }
 
-@mixin mobile{
-    @media (max-width: 480px){
+@mixin mobile {
+    @media (max-width: 480px) {
         @content;
     }
 }
 
-@mixin tablet{
-    @media (max-width: 960px){
+@mixin tablet {
+    @media (max-width: 960px) {
         @content;
     }
 }

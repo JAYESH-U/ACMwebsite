@@ -1,6 +1,6 @@
 @import '../../../main.scss';
 
-.govbod {
+.teamBody {
     @include themify($themes) {
         display: flex;
         align-items: center;
@@ -16,7 +16,7 @@
 
         }
 
-        .govs {
+        .teamMembers {
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -25,21 +25,86 @@
             padding: 20px;
             gap: 50px;
 
-            .gov {
+            .teamDetails {
                 display: flex;
-                flex-wrap: wrap;
-                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                margin: 10px;
-                gap:10px;
+                justify-content: space-around;
+                flex-direction: column;
 
 
-                img {
+                .teamMember {
+                    // display: flex;
+                    // flex-wrap: wrap;
+                    // flex-direction: column;
+                    // align-items: center;
+                    // justify-content: center;
+                    margin: 10px;
+                    gap: 10px;
+                    position: relative;
                     height: 400px;
                     width: 300px;
-                    border-radius: 40px;
-                    object-fit: cover;
+                    border: 1px solid themed('border');
+                    border-radius: 20px;
+                    box-sizing: border-box;
+                    overflow: hidden;
+
+                    .memberImg {
+                        height: 100%;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 20px;
+
+                    }
+
+                    &:hover .memberInfo {
+                        right: 0;
+                        opacity: 1;
+
+                    }
+
+                    .memberInfo {
+                        height: 400px;
+                        width: 300px;
+                        position: absolute;
+                        top: 0;
+                        right: -101%;
+                        background: #689be238;
+                        backdrop-filter: blur(5px);
+                        border-radius: 20px;
+                        color: themed('textColor');
+                        box-sizing: border-box;
+                        padding: 20px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        opacity: 0;
+                        transition: 1s;
+
+                        .memberName {
+                            text-transform: uppercase;
+                            font-size: 30px;
+                            font-weight: 500;
+
+                        }
+
+                        .memberPost {
+                            text-transform: capitalize;
+                            font-size: 20px;
+                            font-weight: 300;
+                            color: themed('card');
+
+                        }
+
+                        .memberDesc {
+                            font-size: 16px;
+                            line-height: 25px;
+                            margin: 40px 0;
+                            font-weight: 400;
+                        }
+
+
+                    }
 
                 }
 
