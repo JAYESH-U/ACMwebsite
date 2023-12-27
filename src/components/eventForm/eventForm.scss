@@ -1,0 +1,63 @@
+@import '../../main.scss';
+
+.eventForm {
+    @include themify($themes) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: themed('bg');
+
+        form {
+            max-width: 50rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-direction: column;
+            padding: 50px;
+            gap: 20px;
+            color: themed('textColor');
+
+            img {
+                width: 50rem;
+                border-radius: 10px;
+
+            }
+
+            .formElements {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+                justify-content: space-between;
+
+                input, textarea{
+                    border: 1px solid themed('logo');
+                    background: transparent;
+                    background-color: themed('bgSoft');
+                    padding: 10px;
+                    border-radius: 10px;
+                    color: themed('textColor');
+                    cursor: pointer;
+                    
+                }
+
+                textarea{
+                    max-height: 500px;
+                    min-height: 200px;
+                    width: 300px;
+                }
+
+                button{
+                    color: themed('textColor');
+                    background-color: themed('bg');
+                    padding: 10px;
+                    border: 1px solid themed('borderSoft');
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+
+            }
+        }
+    }
+}

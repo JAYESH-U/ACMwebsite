@@ -1,7 +1,8 @@
 import React from 'react';
 import './teams.scss';
-import pic from '../../assets/me.jpg';
-// import pic from '../../assets/dummyImage.png';
+// import pic from '../../assets/me.jpg';
+import pic from '../../assets/dummyImage.png';
+import sirpic from '../../assets/perurSir.jpg';
 import Team from '../../components/teams/team/Team';
 import Faculty from '../../components/teams/faculty/Faculty';
 
@@ -224,7 +225,21 @@ function Teams() {
             sem: 5,
             img: pic
         },
+        {
+            id: 24,
+            name: 'Shrivasta Perur',
+            desc: 'Hello, I am passionate about my work. I will dedicate my work for the club.',
+            post: 'Prof',
+            category: 'Faculty coordinator',
+            sem: null,
+            img: sirpic
+        },
     ];
+
+    function faculty(team) {
+        return team.category == "Faculty coordinator";
+    }
+    const facultyList = teams.filter(faculty);
 
     function governing(team) {
         return team.category == "Governing Body";
@@ -272,11 +287,12 @@ function Teams() {
         <>
             <div className="bod">
                 <h1>ACM student chapter 2023-34</h1>
-                <Faculty />
+                {/* <Faculty values={{ category: "Faculty coordinator", list: facultyList }}/> */}
                 <div className="teams">
+                    <Team values={{ category: "Faculty coordinator", list: facultyList }} />
                     <Team values={{ category: "Governing Body", list: govList }} />
-                    <Team values={{ category: "Web Team", list: webList }} />
                     <Team values={{ category: "Tech Team", list: techList }} />
+                    <Team values={{ category: "Web Team", list: webList }} />
                     <Team values={{ category: "Graphic Designers Team", list: graphicList }} />
                     <Team values={{ category: "Public relations Team", list: publicList }} />
                     <Team values={{ category: "Marketing Team", list: marketList }} />

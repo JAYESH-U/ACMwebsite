@@ -6,11 +6,26 @@
         align-items: center;
         justify-content: space-around;
         flex-direction: row;
-        flex: 3;
         flex-wrap: wrap;
         padding: 50px;
         background-color: themed('bg');
+        gap: 50px;
 
+        .addEventButton{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p{
+                color: themed('textColor');
+                border-radius: 10px;
+                padding: 10px;
+                border: 1px solid themed('borderSoft');
+
+            }
+
+        }
         
     }
 }

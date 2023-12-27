@@ -1,0 +1,111 @@
+@import '../../main.scss';
+
+.eventDetails {
+    @include themify($themes) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        // margin: 20px;
+        padding: 50px 200px;
+        background: themed('bg');
+        gap: 50px;
+
+
+        img {
+            height: 40rem;
+            // width: 600px;
+            object-fit: cover;
+            border-radius: 10px;
+
+        }
+
+
+        .details {
+            display: flex;
+            flex: 6;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+
+            .description1 {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+                width: 100%;
+
+                h3 {
+                    color: themed('textColor');
+                    font-size: 25px;
+                    font-weight: 600;
+
+                }
+
+                span {
+                    color: themed('textColorSoft');
+                    font-weight: 500;
+
+                }
+
+            }
+
+            .eventDescription {
+                color: themed('textColor');
+                padding: 30px;
+                border: 1px solid themed('border');
+                border-radius: 10px;
+            }
+
+            .description2,
+            .description3 {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 100%;
+                gap: 20px;
+                margin-bottom: 5px;
+
+            }
+
+
+            span {
+                color: themed('textColorSoft');
+                font-weight: 500;
+
+                strong {
+                    color: themed('textColor');
+                }
+
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            .eventLink {
+                border: 1px solid themed('logo');
+                color: themed('textColor');
+                font-weight: 500;
+                padding: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            .editables{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                gap: 10;
+                align-items: center;
+
+            }
+
+        }
+    }
+}

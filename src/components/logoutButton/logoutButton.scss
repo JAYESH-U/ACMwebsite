@@ -1,16 +1,14 @@
 @import '../../main.scss';
 
-.support {
+.logoutButton {
     @include themify($themes) {
-        height: 100vh;
-        background-color: themed('bg');
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: themed('bg');
 
-        .loginLink {
-            margin-top: 100px;
+        .loginLink{
+            margin: 2rem;
             color: themed('textColor');
             padding: 10px;
             border: 1px solid themed('border');
@@ -18,6 +16,5 @@
             font-weight: 500;
             
         }
-
     }
 }

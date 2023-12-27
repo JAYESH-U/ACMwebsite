@@ -36,9 +36,11 @@
                 color: themed('textColor');
                 display: flex;
                 align-items: center;
+                cursor: pointer;
 
                 &:hover {
                     color: gray;
+                    // text-shadow: 2px 2px 5px themed('textColorSoft');
                 }
 
             }

@@ -1,11 +1,12 @@
 import React from 'react';
 import "./navbar.scss";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import acmLogo from '../../assets/ACMlogo.png';
 import useTheme from '../../context/DarkModeContext';
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import { useSelector } from 'react-redux';
 
 
 function Navbar() {
@@ -17,6 +18,42 @@ function Navbar() {
         toggle();
     }
 
+    const authStatus = useSelector((state) => state.auth.status);
+    const navigate = useNavigate();
+
+    const navItems = [
+        {
+            name: 'Home',
+            link: "/",
+            active: true
+        },
+        {
+            name: "About",
+            link: "/about",
+            active: true,
+        },
+        {
+            name: "Events",
+            link: "/events",
+            active: true,
+        },
+        {
+            name: "Team",
+            link: "/team",
+            active: true,
+        },
+        {
+            name: "Support",
+            link: "/support",
+            active: true,
+        },
+        {
+            name: "Admin",
+            link: "/admin",
+            active: authStatus,
+        },
+    ];
+
     return (
         <>
             <div className="navbar">
@@ -26,21 +63,12 @@ function Navbar() {
                     </Link>
                 </div>
                 <div className="center">
-                    <Link to="/" style={{ textDecoration: "none" }}>
-                        <span className='navItems'>Home</span>
-                    </Link>
-                    <Link to="/about" style={{ textDecoration: "none" }}>
-                        <span className='navItems'>About</span>
-                    </Link>
-                    <Link to="/events" style={{ textDecoration: "none" }}>
-                        <span className='navItems'>Events</span>
-                    </Link>
-                    <Link to="/team" style={{ textDecoration: "none" }}>
-                        <span className='navItems'>Team</span>
-                    </Link>
-                    <Link to="/support" style={{ textDecoration: "none" }}>
-                        <span className='navItems'>Support</span>
-                    </Link>
+                    {navItems.map((item) =>
+                        item.active
+                        && <span key={item.link} className='navItems' onClick={() => navigate(item.link)}>
+                            {item.name}
+                        </span>
+                    )}
                     <span className='navItems'>
                         {darkMode ? <DarkModeOutlinedIcon onClick={onclick} /> : <WbSunnyOutlinedIcon onClick={onclick} />}
                     </span>
