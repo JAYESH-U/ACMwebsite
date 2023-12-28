@@ -15,11 +15,14 @@ import Support from './pages/support/Support';
 import Admin from './pages/admin/Admin';
 import Login from './pages/login/Login';
 import EditEvent from './pages/editEvent/EditEvent';
+import AddEvent from './pages/addEvent/AddEvent';
+import AddMember from './pages/addMember/AddMember';
+import EditMember from './pages/editMember/EditMember';
+import MemberDetails from './pages/memberDetails/MemberDetails';
 
 import Navbar from './components/navbar/Navbar';
 import AuthLayout from './components/AuthLayout';
-import EventDetails from './components/eventDetails/EventDetails';
-import AddEvent from './pages/addEvent/AddEvent';
+import EventDetails from './pages/eventDetails/EventDetails';
 
 function App() {
 
@@ -125,6 +128,28 @@ function App() {
 				{
 					path: '/event/:id',
 					element: <EventDetails />
+				},
+				{
+					path: '/edit-member/:id',
+					element: (
+						<AuthLayout authentication>
+							{" "}
+							<EditMember />
+						</AuthLayout>
+					)
+				},
+				{
+					path: '/add-member',
+					element: (
+						<AuthLayout authentication>
+							{" "}
+							<AddMember />
+						</AuthLayout>
+					)
+				},
+				{
+					path: '/member/:id',
+					element: <MemberDetails />
 				},
 			],
 		},

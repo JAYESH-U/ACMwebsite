@@ -118,6 +118,23 @@
 
                     }
                 }
+                
+                .editMembers{
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    margin-top: 20px;
+
+                    span{
+                        padding: 10px;
+                        color: themed('textColor');
+                        border: 1px solid themed('borderSoft');
+                        border-radius: 10px;
+                        
+                    }
+
+                }
             }
         }
     }

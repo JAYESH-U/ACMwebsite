@@ -11,16 +11,18 @@ function EventDetails() {
     const { id } = useParams();
     const navigate = useNavigate(); // Use useNavigate directly
 
-	const authStatus = useSelector(state => state.auth.status);
+    const authStatus = useSelector(state => state.auth.status);
 
     //fetch event...
     useEffect(() => {
         if (id) {
-            events.getEvent(id).then((event) => {
-                console.log("event: ", event);
-                if (event) setEvent(event);
-                else navigate("/");
-            }).catch((err) => console.log(err));
+            events.getEvent(id)
+                .then((event) => {
+                    console.log("event: ", event);
+                    if (event) setEvent(event);
+                    else navigate("/");
+                })
+                .catch((err) => console.log(err));
         } else navigate("/");
     }, [id, navigate]);
 
@@ -83,7 +85,7 @@ function EventDetails() {
                             }
                         </span>
 
-                        <Link style={{ textDecoration: "none" }} to={`/events`}>
+                        <Link style={{ textDecoration: "none" }} onClick={()=> navigate(-1)}>
                             <span className='eventLink'>Back</span>
                         </Link>
                     </div>
@@ -103,7 +105,11 @@ function EventDetails() {
                 </div>
             </div>
         </div>
-    ) : null;
+    ) : (
+        <div className="events">
+            <h1>Loading</h1>
+        </div>
+    );
 }
 
 export default EventDetails;

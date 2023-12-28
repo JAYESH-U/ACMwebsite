@@ -11,6 +11,10 @@
         background-color: themed('bg');
         gap: 50px;
 
+        h1{
+            color: themed('textColor');
+        }
+
         .addEventButton{
             width: 100%;
             display: flex;

@@ -69,11 +69,11 @@ function Events() {
 				if (posts) {
 					setPosts(posts.documents);
 				}
-			})
+			});
 	}, []);
 
 	console.log("posts: ", posts);
-	return (
+	return posts.length > 0 ? (
 		<>
 			<div className="events">
 				{posts.map(event => (
@@ -89,7 +89,11 @@ function Events() {
 				}
 			</div>
 		</>
-	)
+	) : (
+		<div className="events">
+			<h1>Loading</h1>
+		</div>
+	);
 }
 
 export default Events

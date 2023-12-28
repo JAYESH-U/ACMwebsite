@@ -6,19 +6,9 @@ import './eventForm.scss'
 
 
 const EventForm = ({ event }) => {
-    const userData = useSelector((state) => state.auth.userData);
+    const authStatus = useSelector((state) => state.auth.status);
 
     const navigate = useNavigate();
-
-    // const [inputs, setInputs] = useState({
-    //     name: '',
-    //     desc: '',
-    //     date: null,
-    //     tags: [],
-    //     collabwith: [],
-    //     img: '',
-    //     reglink: '',
-    // });
 
     const [inputs, setInputs] = useState({
         name: event?.name || '',
@@ -47,10 +37,19 @@ const EventForm = ({ event }) => {
         setInputs((prev) => ({ ...prev, [name]: inputArrayValue }));
     };
 
+    const [loading, setLoading] = useState(false); // State variable for loading indicator
+
     const handleClick = async (e) => {
         e.preventDefault();
 
-        submit(inputs);
+        setLoading(true);
+
+        try {
+            await submit(inputs);
+        } finally {
+            // Stop loading, whether the submission was successful or not
+            setLoading(false);
+        }
     }
 
     console.log("Event Editing page : ", event);
@@ -60,7 +59,7 @@ const EventForm = ({ event }) => {
         console.log('Data : ', typeof (data.img), data.img);
 
         if (event) {
-            const file = data.img instanceof File? await events.uploadFile(data.img) : null;
+            const file = data.img instanceof File ? await events.uploadFile(data.img) : null;
 
             if (file) {
                 events.deleteFile(event.img);
@@ -80,7 +79,7 @@ const EventForm = ({ event }) => {
             if (file) {
                 const fileId = file.$id;
                 data.img = fileId;
-                const dbEvent = await events.createEvent({ ...data});
+                const dbEvent = await events.createEvent({ ...data });
                 console.log("dbPost : ", dbEvent);
 
                 if (dbEvent) {
@@ -114,7 +113,7 @@ const EventForm = ({ event }) => {
                     <label htmlFor="date">Date and Time </label><input type="datetime-local" name="date" placeholder="Date" value={inputs.date || ''} onChange={handleChange} />
                 </div>
                 <div className="formElements">
-                    <label htmlFor="date">Registration Link </label><input type="url" name="reglink" placeholder="Link" value={inputs.reglink || ''} onChange={handleChange} />
+                    <label htmlFor="reglink">Registration Link </label><input type="url" name="reglink" placeholder="Link" value={inputs.reglink || ''} onChange={handleChange} />
                 </div>
                 <div className="formElements">
                     <label htmlFor="tags">Tags</label><input type="text" name="tags" placeholder="Tags" value={inputs.tags} onChange={handleChange} />
@@ -124,6 +123,9 @@ const EventForm = ({ event }) => {
                 </div>
                 <div className="formElements">
                     <button onClick={handleClick}>Submit</button>
+                </div>
+                <div className="formElements">
+                        {loading ? 'Submitting...' : null}
                 </div>
             </form>
         </div>
