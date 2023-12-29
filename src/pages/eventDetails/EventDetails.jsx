@@ -4,6 +4,8 @@ import './eventDetails.scss';
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 import events from '../../appwrite/events';
+import Loading from "../../components/loading/Loading";
+import Button from "../../components/button/Button";
 
 function EventDetails() {
     const [event, setEvent] = useState(null);
@@ -81,22 +83,16 @@ function EventDetails() {
                         <span>
                             {isEventPassed ?
                                 '(Event Passed)' :
-                                <a href={event.reglink} target='_blank' rel="noopener noreferrer" className='eventLink'>Register</a>
+                                <Button link={event.reglink} target={'_blank'} name={'Register'} />
                             }
                         </span>
 
-                        <Link style={{ textDecoration: "none" }} onClick={()=> navigate(-1)}>
-                            <span className='eventLink'>Back</span>
-                        </Link>
+                        <Button link={`/events`}  name={'back'} />
                     </div>
 
                     {authStatus && (
                         <div className="editables">
-                            <Link to={`/edit-event/${event.$id}`} style={{ textDecoration: "none" }}>
-                                <span className='eventLink'>
-                                    Edit
-                                </span>
-                            </Link>
+                            <Button link={`/edit-event/${event.$id}`} name={'Edit'} />
                             <span className='eventLink' onClick={deleteEvent} >
                                 Delete
                             </span>
@@ -106,9 +102,7 @@ function EventDetails() {
             </div>
         </div>
     ) : (
-        <div className="events">
-            <h1>Loading</h1>
-        </div>
+        <Loading />
     );
 }
 

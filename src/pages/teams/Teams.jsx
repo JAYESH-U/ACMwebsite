@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './teams.scss';
 // import pic from '../../assets/me.jpg';
-import pic from '../../assets/dummyImage.png';
-import sirpic from '../../assets/perurSir.jpg';
-import Team from '../../components/teams/team/Team';
-import Faculty from '../../components/teams/faculty/Faculty';
+// import pic from '../../assets/dummyImage.png';
+// import sirpic from '../../assets/perurSir.jpg';
+import Team from '../../components/team/Team';
 import members from '../../appwrite/members';
+import Loading from '../../components/loading/Loading';
+import Button from '../../components/button/Button';
 
 function Teams() {
 
@@ -313,12 +314,11 @@ function Teams() {
                     <Team values={{ category: "Management Team", list: managementList }} />
                     <Team values={{ category: "Content writers Team", list: contentList }} />
                 </div>
+                <Button link={`/add-member`} name={'Add new member'} />
             </div>
         </>
     ) : (
-        <div className="events">
-            <h1>Loading</h1>
-        </div>
+        <Loading />
     );
 }
 

@@ -3,6 +3,8 @@ import './memberDetails.scss';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import members from '../../appwrite/members';
+import Loading from '../../components/loading/Loading';
+import Button from '../../components/button/Button';
 
 
 // import pic from '../../assets/dummyImage.png';
@@ -13,16 +15,17 @@ function MemberDetails() {
     const navigate = useNavigate();
 
     const [member, setMember] = useState(null);
+    const [err, setErr] = useState(null);
 
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
 
     //fetch event...
     useEffect(() => {
         if (id) {
             members.getMember(id)
                 .then((member) => {
-                    console.log("member: ", member);
+                    // console.log("member: ", member);
                     if (member) setMember(member);
                     else navigate("/");
                 })
@@ -32,16 +35,17 @@ function MemberDetails() {
 
 
     //delete event...
-    const deleteEvent = () => {
+    const deleteMember = () => {
         members.deleteMember(member.$id).then((status) => {
             if (status) {
                 members.deleteFile(member.img);
-                navigate("/events");
+                navigate("/team");
             }
-        });
+        })
+        .catch(err => setErr(err));
     };
 
-    console.log(member);
+    // console.log(member);
 
     return member ? (
         <div className='memberDetails'>
@@ -59,27 +63,21 @@ function MemberDetails() {
                 <p className='memberDescription'>{member.desc}</p>
 
 
-                <Link style={{ textDecoration: "none" }} onClick={() => navigate(`/team`)}>
-                    <span className='eventLink'>Back</span>
-                </Link>
+                <Button link={`/team`} name={'back'} />
             </div>
 
             {authStatus &&
                 <div className='editMembers'>
-                    <Link to={`/edit-member/${member.$id}`} style={{ textDecoration: 'none' }}>
-                        <span>Edit</span>
-                    </Link>
-                    <Link to={`/delete-member/${member.$id}`} style={{ textDecoration: 'none' }}>
-                        <span>Delete</span>
-                    </Link>
+                    <Button link={`/edit-member/${member.$id}`} name={'Edit'} />
+                    <button className='eventLink' onClick={deleteMember} >
+                        Delete
+                    </button>
                 </div>
             }
 
         </div>
     ) : (
-        <div className="events">
-            <h1>Loading</h1>
-        </div>
+        <Loading />
     );
 }
 

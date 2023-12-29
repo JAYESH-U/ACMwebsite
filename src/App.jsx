@@ -23,6 +23,7 @@ import MemberDetails from './pages/memberDetails/MemberDetails';
 import Navbar from './components/navbar/Navbar';
 import AuthLayout from './components/AuthLayout';
 import EventDetails from './pages/eventDetails/EventDetails';
+import Loading from './components/loading/Loading';
 
 function App() {
 
@@ -60,7 +61,7 @@ function App() {
 				<Navbar />
 				<Outlet />
 			</div>
-		) : null;
+		) : <Loading />;
 	};
 
 	const router = createBrowserRouter([

@@ -2,6 +2,7 @@
 
 .events {
     @include themify($themes) {
+
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -11,17 +12,17 @@
         background-color: themed('bg');
         gap: 50px;
 
-        h1{
+        h1 {
             color: themed('textColor');
         }
 
-        .addEventButton{
+        .addEventButton {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
 
-            p{
+            p {
                 color: themed('textColor');
                 border-radius: 10px;
                 padding: 10px;
@@ -30,6 +31,6 @@
             }
 
         }
-        
+
     }
 }

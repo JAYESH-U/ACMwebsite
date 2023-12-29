@@ -2,6 +2,7 @@ import React from 'react';
 import './eventCard.scss';
 import { Link } from 'react-router-dom';
 import events from '../../appwrite/events';
+import Button from '../button/Button';
 
 function EventCard({ value: event }) {
     const today = new Date();
@@ -27,10 +28,10 @@ function EventCard({ value: event }) {
                     <span>
                         {eventDate < today ?
                             '(Event Passed)' :
-                            <a href={event.reglink} target='_blank' rel="noopener noreferrer" className='eventLink'>Register</a>
+                            <Button link={event.reglink} target={'_blank'} name={'Register'} />
                         }
                     </span>
-                    <Link style={{ textDecoration: "none" }} to={`/event/${event.$id}`}><span className='eventLink'>Details</span></Link>
+                    <Button link={`/event/${event.$id}`} name={'Details'} />
                 </div>
             </div>
         </div>

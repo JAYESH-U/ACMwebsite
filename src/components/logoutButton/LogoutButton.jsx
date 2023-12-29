@@ -23,8 +23,8 @@ function LogoutButton() {
     }
 
     return (
-        <div className='logoutButton'>
-            <span className='loginLink' onClick={logoutHandler}>logout</span>
+        <div className='logout'>
+            <button className='logoutButton' onClick={logoutHandler}>Logout</button>
         </div>
     )
 }

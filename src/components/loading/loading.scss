@@ -1,0 +1,12 @@
+@import '../../main.scss';
+
+.loading {
+    @include themify($themes) {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: themed('bg') ;
+        color: themed('textColor');
+    }
+}

@@ -3,6 +3,8 @@ import './memberForm.scss';
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import members from "../../appwrite/members";
+import Loading from '../loading/Loading';
+import { Button } from '@mui/material';
 
 
 function MemberForm({ member }) {
@@ -124,7 +126,7 @@ function MemberForm({ member }) {
     ];
 
 
-    return member ? (
+    return (
         <div className="memberForm">
             <form>
                 {member && <img src={members.getFilePreview(member.img)} alt={member.name} />}
@@ -135,20 +137,20 @@ function MemberForm({ member }) {
                     }<input type="file" name="img" placeholder="Event image / banner" onChange={handleChange} />
                 </div>
                 <div className="formElements">
-                    <label htmlFor="name">Name</label><input type="text" name="name" placeholder="Event name" value={inputs.name || ''} onChange={handleChange} />
+                    <label htmlFor="name">Name</label><input type="text" name="name" placeholder="Member name" value={inputs.name || ''} onChange={handleChange} />
                 </div>
                 <div className="formElements">
-                    <label htmlFor="desc">Description</label><textarea type="text" name="desc" placeholder="Event description" value={inputs.desc || ''} onChange={handleChange} />
+                    <label htmlFor="desc">Description</label><textarea type="text" name="desc" placeholder="Member description" value={inputs.desc || ''} onChange={handleChange} />
                 </div>
                 <div className="formElements">
                     <label htmlFor="post">Post</label><input type="url" name="post" placeholder="Post" value={inputs.post || ''} onChange={handleChange} />
                 </div>
                 <div className="formElements">
                     <label htmlFor="category">Team</label>
-                    <select name="team" value={inputs.category} placeholder={inputs.category} onChange={handleChange}>
-                        <option value="">Select Team</option>
+                    <select name="category" value={inputs.category} placeholder={inputs.category} onChange={handleChange}>
+                        <option value={inputs.category}>{inputs.category || 'Select Team'}</option>
                         {teams.map((team) => (
-                            <option key={team} value={team} >
+                            <option key={team} value={team}>
                                 {team}
                             </option>
                         ))}
@@ -171,10 +173,6 @@ function MemberForm({ member }) {
                     {loading ? 'Submitting...' : null}
                 </div>
             </form>
-        </div>
-    ) : (
-        <div className="events">
-            <h1>Loading</h1>
         </div>
     );
 }

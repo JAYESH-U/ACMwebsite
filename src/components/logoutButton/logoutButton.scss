@@ -1,19 +1,22 @@
 @import '../../main.scss';
 
-.logoutButton {
+.logout {
     @include themify($themes) {
+        height: calc(100vh - 85px);
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: themed('bg');
 
-        .loginLink{
+        .logoutButton{
             margin: 2rem;
             color: themed('textColor');
             padding: 10px;
             border: 1px solid themed('border');
+            background-color: themed('bg');
             border-radius: 10px;
             font-weight: 500;
+            cursor: pointer;
             
         }
     }

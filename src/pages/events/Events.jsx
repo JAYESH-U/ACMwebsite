@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import EventCard from '../../components/eventCard/EventCard';
 import events from '../../appwrite/events';
 import { Link } from 'react-router-dom';
+import Loading from '../../components/loading/Loading';
+import Button from '../../components/button/Button';
 
 function Events() {
 
@@ -83,16 +85,12 @@ function Events() {
 				))}
 				{/* {authStatus && <EventCard value={dummyEvent} />} */}
 				{authStatus
-					&& <div className='addEventButton'>
-						<Link to={'/add-event'} style={{ textDecoration: 'none' }}><p>Add event</p></Link>
-					</div>
+					&& <Button link={'/add-event'} name={'Add event'}/>
 				}
 			</div>
 		</>
 	) : (
-		<div className="events">
-			<h1>Loading</h1>
-		</div>
+		<Loading />
 	);
 }
 

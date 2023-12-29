@@ -1,0 +1,12 @@
+@import '../../main.scss';
+
+.button {
+    @include themify($themes) {
+        border: 1px solid themed('logo');
+        background-color: themed('bg');
+        color: themed('textColor');
+        font-weight: 500;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}

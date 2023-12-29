@@ -11,7 +11,7 @@ function Admin() {
     return (
         <div className='admin'>
             <LogoutButton />
-            <Sidebar />
+            {/* <Sidebar /> */}
         </div>
     );
 }

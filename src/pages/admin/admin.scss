@@ -1,0 +1,8 @@
+@import '../../main.scss';
+
+.admin {
+    @include themify($themes) {
+        height: 100%;
+
+    }
+}
