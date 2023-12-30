@@ -17,11 +17,20 @@
 
 
         img {
-            height: 600px;
-            width: 600px;
-            object-fit: cover;
+            height: 40rem;
+            width: 40rem;
             border-radius: 10px;
-
+            object-fit: cover;
+            
+            
+            @include tablet {
+                height: 20rem;
+                width: 20rem;
+            }
+            @include mobile {
+                height: 20rem;
+                width: 20rem;
+            }
         }
 
 

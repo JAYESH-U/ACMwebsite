@@ -72,6 +72,7 @@ const EventForm = ({ event }) => {
 
             if (dbEvent) {
                 navigate(`/event/${dbEvent.$id}`);
+                window.location.reload();
             }
         } else {
             const file = await events.uploadFile(data.img);
@@ -86,6 +87,7 @@ const EventForm = ({ event }) => {
                     setTimeout(() => {
                         console.log("File uploaded");
                         navigate(`/event/${dbEvent.$id}`);
+                        window.location.reload();
                     }, 1000);
                 }
             }

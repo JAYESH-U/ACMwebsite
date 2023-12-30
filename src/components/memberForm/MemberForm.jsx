@@ -73,7 +73,7 @@ function MemberForm({ member }) {
         }
     }
 
-    console.log("member Editing page : ", member);
+    // console.log("member Editing page : ", member);
     console.log("inputs : ", inputs);
 
     const submit = async (data) => {
@@ -93,6 +93,7 @@ function MemberForm({ member }) {
 
             if (dbMember) {
                 navigate(`/member/${dbMember.$id}`);
+                window.location.reload();
             }
         } else {
             const file = await members.uploadFile(data.img);
@@ -107,6 +108,7 @@ function MemberForm({ member }) {
                     setTimeout(() => {
                         console.log("File uploaded");
                         navigate(`/member/${dbMember.$id}`);
+                        window.location.reload();
                     }, 1000);
                 }
             }

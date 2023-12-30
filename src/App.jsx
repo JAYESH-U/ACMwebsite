@@ -6,6 +6,10 @@ import store from './store/store.js'
 import { login, logout } from './store/authSlice';
 import { DarkModeContextProvider } from './context/DarkModeContext';
 import authService from './appwrite/auth';
+import events from './appwrite/events';
+import { storeEvents } from './store/eventSlice';
+import members from './appwrite/members';
+import { storeMemebrs } from './store/teamSlice';
 
 import Home from './pages/home/home';
 import About from './pages/about/About';
@@ -39,8 +43,29 @@ function App() {
 					dispatch(logout());
 				}
 			})
-			.finally(() => setLoading(false))
-	}, [dispatch])
+			.catch((err) => console.log('No user found: ', err));
+		// .finally(() => setLoading(false));
+
+		members.getMembers()
+			.then((memberList) => {
+				if (memberList) {
+					dispatch(storeMemebrs(memberList.documents));
+				} else {
+					console.log("Members found is zero");
+				}
+			})
+			.catch((err) => console.log('Error finding members : ', err));
+
+		events.getEvents()
+			.then((eventList) => {
+				if (eventList) {
+					dispatch(storeEvents(eventList.documents));
+				}
+			})
+			.catch((err) => console.log('errors finding events : ', err))
+			.finally(() => setLoading(false));
+	}, [dispatch]);
+
 
 	const [darkMode, setDarkMode] = useState(
 		JSON.parse(localStorage.getItem("darkMode")) || false
@@ -64,103 +89,11 @@ function App() {
 		) : <Loading />;
 	};
 
-	const router = createBrowserRouter([
-		{
-			path: '/login',
-			element: (
-				<AuthLayout authentication={false}>
-					<Login />
-				</AuthLayout>
-			)
-		},
-		{
-			path: '/',
-			element: (
-				<Layout />
-			),
-			children: [
-				{
-					path: '/',
-					element: <Home />
-				},
-				{
-					path: '/about',
-					element: <About />
-				},
-				{
-					path: '/events',
-					element: <Events />
-				},
-				{
-					path: '/team',
-					element: <Teams />
-				},
-				{
-					path: '/support',
-					element: <Support />
-				},
-				{
-					path: '/admin',
-					element: (
-						<AuthLayout authentication>
-							{" "}
-							<Admin />
-						</AuthLayout>
-					)
-				},
-				{
-					path: '/edit-event/:id',
-					element: (
-						<AuthLayout authentication>
-							{" "}
-							<EditEvent />
-						</AuthLayout>
-					)
-				},
-				{
-					path: '/add-event',
-					element: (
-						<AuthLayout authentication>
-							{" "}
-							<AddEvent />
-						</AuthLayout>
-					)
-				},
-				{
-					path: '/event/:id',
-					element: <EventDetails />
-				},
-				{
-					path: '/edit-member/:id',
-					element: (
-						<AuthLayout authentication>
-							{" "}
-							<EditMember />
-						</AuthLayout>
-					)
-				},
-				{
-					path: '/add-member',
-					element: (
-						<AuthLayout authentication>
-							{" "}
-							<AddMember />
-						</AuthLayout>
-					)
-				},
-				{
-					path: '/member/:id',
-					element: <MemberDetails />
-				},
-			],
-		},
-
-	]);
 
 	return (
 		<>
 			<DarkModeContextProvider value={{ darkMode, toggle }}>
-				<RouterProvider router={router} />
+				<Layout />
 			</DarkModeContextProvider>
 		</>
 	);

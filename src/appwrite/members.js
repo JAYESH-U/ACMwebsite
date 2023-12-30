@@ -78,7 +78,7 @@ export class Service {
     }
 
     async getMember(id) {
-        // console.log("Getting an member of id : ", id);
+        console.log("Getting an member of id : ", id);
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseId,

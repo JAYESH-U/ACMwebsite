@@ -3,6 +3,7 @@ import './editEvent.scss';
 import EventForm from '../../components/eventForm/EventForm';
 import { useNavigate, useParams } from 'react-router-dom';
 import events from '../../appwrite/events';
+import Loading from '../../components/loading/Loading';
 
 
 function EditEvent() {
@@ -32,7 +33,7 @@ function EditEvent() {
         <div className='editEventPage'>
             <EventForm event={event} />
         </div>
-    ) : null;
+    ) : <Loading />;
 }
 
 export default EditEvent;

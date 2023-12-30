@@ -14,19 +14,29 @@ function EventDetails() {
     const navigate = useNavigate(); // Use useNavigate directly
 
     const authStatus = useSelector(state => state.auth.status);
+    const eventList = useSelector(state => state.events.eventList)
+
+    useEffect(() => {
+        const foundEvent = eventList.find(event => event.$id === id);
+        if (foundEvent) {
+            setEvent(foundEvent);
+        } else {
+            navigate("/events");
+        }
+    }, [id, eventList, navigate]);
 
     //fetch event...
-    useEffect(() => {
-        if (id) {
-            events.getEvent(id)
-                .then((event) => {
-                    console.log("event: ", event);
-                    if (event) setEvent(event);
-                    else navigate("/");
-                })
-                .catch((err) => console.log(err));
-        } else navigate("/");
-    }, [id, navigate]);
+    // useEffect(() => {
+    //     if (id) {
+    //         events.getEvent(id)
+    //             .then((event) => {
+    //                 console.log("event: ", event);
+    //                 if (event) setEvent(event);
+    //                 else navigate("/");
+    //             })
+    //             .catch((err) => console.log(err));
+    //     } else navigate("/");
+    // }, [id, navigate]);
 
 
     //delete event...
@@ -35,6 +45,7 @@ function EventDetails() {
             if (status) {
                 events.deleteFile(event.img);
                 navigate("/events");
+                window.location.reload();
             }
         });
     };
@@ -87,7 +98,7 @@ function EventDetails() {
                             }
                         </span>
 
-                        <Button link={`/events`}  name={'back'} />
+                        <Button link={`/events`} name={'back'} />
                     </div>
 
                     {authStatus && (

@@ -92,6 +92,7 @@ export class Service {
 
     async getEvents(queries = [Query.orderDesc("date")]) {
         try {
+            console.log("fetching events");
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteEventsCollectionId,

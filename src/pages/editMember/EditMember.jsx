@@ -3,6 +3,7 @@ import './editMember.scss';
 import MemberForm from '../../components/memberForm/MemberForm';
 import { useNavigate, useParams } from 'react-router-dom';
 import members from '../../appwrite/members';
+import Loading from '../../components/loading/Loading';
 
 function EditMember() {
 
@@ -27,11 +28,11 @@ function EditMember() {
 	console.log("member id: ", id);
 	console.log("member editing: ", member);
 
-	return (
+	return member ? (
 		<div className='editMemberPage'>
 			<MemberForm member={member} />
 		</div>
-	)
+	) : <Loading />;
 }
 
 export default EditMember

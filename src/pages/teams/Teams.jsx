@@ -7,6 +7,7 @@ import Team from '../../components/team/Team';
 import members from '../../appwrite/members';
 import Loading from '../../components/loading/Loading';
 import Button from '../../components/button/Button';
+import { useSelector } from 'react-redux';
 
 function Teams() {
 
@@ -238,63 +239,34 @@ function Teams() {
     //     },
     // ];
 
-    const [teams, setTeams] = useState([]);
+    // const [teams, setTeams] = useState([]);
 
-    useEffect(() => {
-        members.getMembers()
-            .then((teams) => {
-                if (teams) {
-                    setTeams(teams.documents);
-                }
-            });
-    }, []);
+    const teams = useSelector(state => state.team.memberList);
 
-    console.log(teams);
+    // useEffect(() => {
+    //     members.getMembers()
+    //         .then((teams) => {
+    //             if (teams) {
+    //                 setTeams(teams.documents);
+    //             }
+    //         });
+    // }, []);
 
-    function faculty(team) {
-        return team.category == "Faculty coordinator";
+    console.log('teams: ',teams);
+
+    function filterByCategory(category, team) {
+        return team.category === category;
     }
-    const facultyList = teams.filter(faculty);
 
-    function governing(team) {
-        return team.category == "Governing Body";
-    }
-    const govList = teams.filter(governing);
-
-    function webteam(team) {
-        return team.category == "Web Team";
-    }
-    const webList = teams.filter(webteam);
-
-    function techTeam(team) {
-        return team.category == "Tech Team";
-    }
-    const techList = teams.filter(techTeam);
-
-    function managementTeam(team) {
-        return team.category == "Management Team";
-    }
-    const managementList = teams.filter(managementTeam);
-
-    function marketingTeam(team) {
-        return team.category == "Marketing Team";
-    }
-    const marketList = teams.filter(marketingTeam);
-
-    function publicTeam(team) {
-        return team.category == "Public Relations Team";
-    }
-    const publicList = teams.filter(publicTeam);
-
-    function graphicTeam(team) {
-        return team.category == "Graphics Team";
-    }
-    const graphicList = teams.filter(graphicTeam);
-
-    function contentTeam(team) {
-        return team.category == "Content Writers Team";
-    }
-    const contentList = teams.filter(contentTeam);
+    const facultyList = teams.filter(team => filterByCategory("Faculty coordinator", team));
+    const govList = teams.filter(team => filterByCategory("Governing Body", team));
+    const webList = teams.filter(team => filterByCategory("Web Team", team));
+    const techList = teams.filter(team => filterByCategory("Tech Team", team));
+    const managementList = teams.filter(team => filterByCategory("Management Team", team));
+    const marketList = teams.filter(team => filterByCategory("Marketing Team", team));
+    const publicList = teams.filter(team => filterByCategory("Public Relations Team", team));
+    const graphicList = teams.filter(team => filterByCategory("Graphics Team", team));
+    const contentList = teams.filter(team => filterByCategory("Content Writers Team", team));
 
 
 

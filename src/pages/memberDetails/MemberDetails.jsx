@@ -20,19 +20,29 @@ function MemberDetails() {
     const { id } = useParams();
     // console.log(id);
 
-    //fetch event...
-    useEffect(() => {
-        if (id) {
-            members.getMember(id)
-                .then((member) => {
-                    // console.log("member: ", member);
-                    if (member) setMember(member);
-                    else navigate("/");
-                })
-                .catch((err) => console.log(err));
-        } else navigate("/");
-    }, [id, navigate]);
+    //fetch member...
+    // useEffect(() => {
+    //     if (id) {
+    //         members.getMember(id)
+    //             .then((member) => {
+    //                 // console.log("member: ", member);
+    //                 if (member) setMember(member);
+    //                 else navigate("/");
+    //             })
+    //             .catch((err) => console.log(err));
+    //     } else navigate("/");
+    // }, [id, navigate]);
 
+    const memberList = useSelector(state => state.team.memberList)
+
+    useEffect(() => {
+        const foundMember = memberList.find(member => member.$id === id);
+        if (foundMember) {
+            setMember(foundMember);
+        } else {
+            navigate("/team");
+        }
+    }, [id, memberList, navigate]);
 
     //delete event...
     const deleteMember = () => {
@@ -40,9 +50,10 @@ function MemberDetails() {
             if (status) {
                 members.deleteFile(member.img);
                 navigate("/team");
+                window.location.reload();
             }
         })
-        .catch(err => setErr(err));
+            .catch(err => setErr(err));
     };
 
     // console.log(member);

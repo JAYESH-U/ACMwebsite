@@ -22,8 +22,8 @@ export default function Protected({ children, authentication = true, }) {
             navigate("/login");
         } else if (!authentication && authStatus !== authentication) {
             console.log("no need for authenticattion...");
-            // console.log('redirecting to "/"');
-            // navigate("/");
+            console.log('redirecting to "/"');
+            navigate("/");
         }
         setLoader(false);
     }, [authStatus, navigate, authentication])

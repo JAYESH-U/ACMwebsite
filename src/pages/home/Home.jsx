@@ -3,6 +3,7 @@ import "./home.scss";
 import useTheme from '../../context/DarkModeContext';
 import Teams from '../teams/Teams.jsx';
 import About from '../about/About';
+import Gallery from '../../components/Gallery/Gallery';
 
 function Home() {
 
@@ -12,6 +13,7 @@ function Home() {
         <div className='home'>
             <About />
             <Teams />
+            {/* <Gallery /> */}
         </div>
     )
 }

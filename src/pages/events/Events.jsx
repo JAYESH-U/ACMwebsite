@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react';
 import "./events.scss";
 import eventImg from '../../assets/event1.jpg';
 import dummyImage from '../../assets/dummyImage.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeEvents } from '../../store/eventSlice';
 import EventCard from '../../components/eventCard/EventCard';
 import events from '../../appwrite/events';
-import { Link } from 'react-router-dom';
 import Loading from '../../components/loading/Loading';
 import Button from '../../components/button/Button';
 
 function Events() {
 
 	const authStatus = useSelector(state => state.auth.status);
+	const eventList = useSelector(state => state.events.eventList);
+
+	const dispatch = useDispatch();
+
+	const [loading, setLoading] = useState(true);
 
 	// const events = [
 	// 	{
@@ -63,29 +68,41 @@ function Events() {
 
 	// console.log(events);
 
-	const [posts, setPosts] = useState([]);
+	// const [posts, setPosts] = useState([]);
 
-	useEffect(() => {
-		events.getEvents()
-			.then((posts) => {
-				if (posts) {
-					setPosts(posts.documents);
-				}
-			});
-	}, []);
+	// useEffect(() => {
+	// 	events.getEvents()
+	// 		.then((posts) => {
+	// 			if (posts) {
+	// 				setPosts(posts.documents);
+	// 			}
+	// 		});
+	// }, []);
 
-	console.log("posts: ", posts);
-	return posts.length > 0 ? (
+	console.log("posts: ",);
+
+	// useEffect(() => {
+	// 	events.getEvents()
+	// 		.then((eventList) => {
+	// 			if (eventList) {
+	// 				dispatch(storeEvents(eventList.documents));
+	// 			}
+	// 		})
+	// 		.catch((err) => console.log('errors finding events : ', err))
+	// 		.finally(() => setLoading(false));
+	// }, [dispatch])
+
+
+	console.log("eventsList: ", eventList);
+	return eventList.length > 0 ? (
 		<>
 			<div className="events">
-				{posts.map(event => (
-					<div className="" key={event.$id}>
-						<EventCard value={event} />
-					</div>
+				{eventList.map(event => (
+						<EventCard value={event} key={event.$id}/>
 				))}
 				{/* {authStatus && <EventCard value={dummyEvent} />} */}
 				{authStatus
-					&& <Button link={'/add-event'} name={'Add event'}/>
+					&& <Button link={'/add-event'} name={'Add event'} />
 				}
 			</div>
 		</>
