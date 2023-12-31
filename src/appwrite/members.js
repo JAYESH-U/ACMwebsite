@@ -111,7 +111,7 @@ export class Service {
         console.log(file);
         try {
             return await this.bucket.createFile(
-                conf.appwriteBucketId,
+                conf.appwriteMemberBucketId,
                 ID.unique(),
                 file
             );
@@ -125,7 +125,7 @@ export class Service {
     async deleteFile(fileId) {
         try {
             await this.bucket.deleteFile(
-                conf.appwriteBucketId,
+                conf.appwriteMemberBucketId,
                 fileId
             );
 
@@ -139,7 +139,7 @@ export class Service {
 
     getFilePreview(fileId) {
         return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
+            conf.appwriteMemberBucketId,
             fileId
         );
     }

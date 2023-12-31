@@ -94,20 +94,35 @@ function Events() {
 
 
 	console.log("eventsList: ", eventList);
-	return eventList.length > 0 ? (
+	// return eventList.length > 0 ? (
+	// 	<>
+	// 		<div className="events">
+	// 			{eventList.map(event => (
+	// 					<EventCard value={event} key={event.$id}/>
+	// 			))}
+	// 			{/* {authStatus && <EventCard value={dummyEvent} />} */}
+	// 			<div className='fullWidth'></div>
+	// 			{authStatus
+	// 				&& <Button link={'/add-event'} name={'Add event'} />
+	// 			}
+	// 		</div>
+	// 	</>
+	// ) : (
+	// 	<Loading />
+	// );
+	return  (
 		<>
 			<div className="events">
-				{eventList.map(event => (
+				{eventList.length > 0 ? eventList.map(event => (
 						<EventCard value={event} key={event.$id}/>
-				))}
+				)) : <Loading />}
 				{/* {authStatus && <EventCard value={dummyEvent} />} */}
+				<div className='fullWidth'></div>
 				{authStatus
 					&& <Button link={'/add-event'} name={'Add event'} />
 				}
 			</div>
 		</>
-	) : (
-		<Loading />
 	);
 }
 

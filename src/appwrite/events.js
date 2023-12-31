@@ -16,7 +16,7 @@ export class Service {
     }
 
     async createEvent({ name, desc, date, tags, collabwith, img, reglink }) {
-        console.log( name, desc, date, tags, collabwith, img, reglink);
+        console.log(name, desc, date, tags, collabwith, img, reglink);
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -55,7 +55,7 @@ export class Service {
                 }
             );
         } catch (error) {
-            console.log("Appwrite service :: updatePost :: error ", error);
+            console.log("Appwrite service :: updateEvent :: error ", error);
         }
     }
 
@@ -69,7 +69,7 @@ export class Service {
 
             return true;
         } catch (error) {
-            console.log("Appwrite service :: deletePost :: error ", error);
+            console.log("Appwrite service :: deleteEvent :: error ", error);
 
             return false;
         }
@@ -84,7 +84,7 @@ export class Service {
             );
 
         } catch (error) {
-            console.log("Appwrite service :: getPost :: error ", error);
+            console.log("Appwrite service :: getEvent :: error ", error);
 
             return false;
         }
@@ -108,7 +108,7 @@ export class Service {
         console.log(file);
         try {
             return await this.bucket.createFile(
-                conf.appwriteBucketId,
+                conf.appwriteEventBucketId,
                 ID.unique(),
                 file
             );
@@ -121,8 +121,9 @@ export class Service {
 
     async deleteFile(fileId) {
         try {
+            console.log('deleting event file : ', fileId);
             await this.bucket.deleteFile(
-                conf.appwriteBucketId,
+                conf.appwriteEventBucketId,
                 fileId
             );
 
@@ -136,7 +137,7 @@ export class Service {
 
     getFilePreview(fileId) {
         return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
+            conf.appwriteEventBucketId,
             fileId
         );
     }

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import './eventDetails.scss';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import events from '../../appwrite/events';
 import Loading from "../../components/loading/Loading";
 import Button from "../../components/button/Button";
+import { deleteEvent as deleteEventFromStore } from "../../store/eventSlice";
 
 function EventDetails() {
     const [event, setEvent] = useState(null);
+
+    const dispatch = useDispatch();
 
     const { id } = useParams();
     const navigate = useNavigate(); // Use useNavigate directly
@@ -44,8 +47,12 @@ function EventDetails() {
         events.deleteEvent(event.$id).then((status) => {
             if (status) {
                 events.deleteFile(event.img);
+
+                // Dispatch the deleteEvent action to update the Redux store
+                dispatch(deleteEventFromStore(event.$id));
+
                 navigate("/events");
-                window.location.reload();
+                // window.location.reload();
             }
         });
     };

@@ -242,6 +242,7 @@ function Teams() {
     // const [teams, setTeams] = useState([]);
 
     const teams = useSelector(state => state.team.memberList);
+    const authStatus = useSelector(state => state.auth.status);
 
     // useEffect(() => {
     //     members.getMembers()
@@ -252,7 +253,7 @@ function Teams() {
     //         });
     // }, []);
 
-    console.log('teams: ',teams);
+    console.log('teams: ', teams);
 
     function filterByCategory(category, team) {
         return team.category === category;
@@ -270,12 +271,37 @@ function Teams() {
 
 
 
-    return teams.length > 0 ? (
+    // return teams.length > 0 ? (
+    //     <>
+    //         <div className="bod">
+    //             <h1>ACM student chapter 2023-24</h1>
+    //             {/* <Faculty values={{ category: "Faculty coordinator", list: facultyList }}/> */}
+    //             <div className="teams">
+    //                 <Team values={{ category: "Faculty coordinator", list: facultyList }} />
+    //                 <Team values={{ category: "Governing Body", list: govList }} />
+    //                 <Team values={{ category: "Tech Team", list: techList }} />
+    //                 <Team values={{ category: "Web Team", list: webList }} />
+    //                 <Team values={{ category: "Graphic Designers Team", list: graphicList }} />
+    //                 <Team values={{ category: "Public relations Team", list: publicList }} />
+    //                 <Team values={{ category: "Marketing Team", list: marketList }} />
+    //                 <Team values={{ category: "Management Team", list: managementList }} />
+    //                 <Team values={{ category: "Content writers Team", list: contentList }} />
+    //             </div>
+    //             {authStatus
+    //                 && <Button link={`/add-member`} name={'Add new member'} />
+    //             }
+    //         </div>
+    //     </>
+    // ) : (
+    //     <Loading />
+    // );
+
+    return (
         <>
             <div className="bod">
                 <h1>ACM student chapter 2023-24</h1>
                 {/* <Faculty values={{ category: "Faculty coordinator", list: facultyList }}/> */}
-                <div className="teams">
+                {teams.length > 0 ? <div className="teams">
                     <Team values={{ category: "Faculty coordinator", list: facultyList }} />
                     <Team values={{ category: "Governing Body", list: govList }} />
                     <Team values={{ category: "Tech Team", list: techList }} />
@@ -285,12 +311,12 @@ function Teams() {
                     <Team values={{ category: "Marketing Team", list: marketList }} />
                     <Team values={{ category: "Management Team", list: managementList }} />
                     <Team values={{ category: "Content writers Team", list: contentList }} />
-                </div>
-                <Button link={`/add-member`} name={'Add new member'} />
+                </div> : <Loading />}
+                {authStatus
+                    && <Button link={`/add-member`} name={'Add new member'} />
+                }
             </div>
         </>
-    ) : (
-        <Loading />
     );
 }
 

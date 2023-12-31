@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './memberDetails.scss';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import members from '../../appwrite/members';
 import Loading from '../../components/loading/Loading';
 import Button from '../../components/button/Button';
+import { deleteMember as deleteMemberFromStore } from '../../store/teamSlice';
 
 
 // import pic from '../../assets/dummyImage.png';
@@ -12,7 +13,9 @@ import Button from '../../components/button/Button';
 
 function MemberDetails() {
     const authStatus = useSelector(state => state.auth.status);
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [member, setMember] = useState(null);
     const [err, setErr] = useState(null);
@@ -40,7 +43,8 @@ function MemberDetails() {
         if (foundMember) {
             setMember(foundMember);
         } else {
-            navigate("/team");
+            // navigate("/team");
+            console.log('NotFound');
         }
     }, [id, memberList, navigate]);
 
@@ -49,8 +53,11 @@ function MemberDetails() {
         members.deleteMember(member.$id).then((status) => {
             if (status) {
                 members.deleteFile(member.img);
+
+                dispatch(deleteMemberFromStore(member.$id));
+
                 navigate("/team");
-                window.location.reload();
+                // window.location.reload();
             }
         })
             .catch(err => setErr(err));

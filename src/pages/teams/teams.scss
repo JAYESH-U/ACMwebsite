@@ -9,11 +9,29 @@
         flex-direction: column;
         background-color: themed('bg');
 
+        @include tablet {
+            padding: 20px;
+        }
+
+        @include mobile {
+            padding: 10px;
+        }
+
         h1 {
             padding: 40px;
             font-size: 50px;
             color: themed('textColorSoft');
+            text-align: center;
 
+            @include tablet {
+                padding: 10px;
+                font-size: 30px;
+            }
+
+            @include mobile {
+                padding: 10px;
+                font-size: 25px;
+            }
 
         }
     }

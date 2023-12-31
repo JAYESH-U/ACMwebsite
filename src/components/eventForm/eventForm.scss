@@ -17,9 +17,27 @@
             gap: 20px;
             color: themed('textColor');
 
+            @include tablet {
+                padding: 20px;
+            }
+
+            @include mobile {
+                padding: 10px;
+            }
+
             img {
                 width: 50rem;
                 border-radius: 10px;
+
+                @include tablet {
+                    width: 30rem;
+                }
+                @include mobile {
+                    width: 20rem;
+                }
+                @include smallmobile {
+                    width: 15rem;
+                }
 
             }
 
@@ -31,7 +49,18 @@
                 align-items: center;
                 justify-content: space-between;
 
-                input, textarea{
+                @include tablet {
+                    font-size: 20px;
+                    gap: 5px;
+                }
+                @include mobile {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    font-size: 15px;
+                }
+
+                input,
+                textarea {
                     border: 1px solid themed('logo');
                     background: transparent;
                     background-color: themed('bgSoft');
@@ -39,16 +68,25 @@
                     border-radius: 10px;
                     color: themed('textColor');
                     cursor: pointer;
-                    
+
+                    @include tablet {
+                        width: 80%;
+                    }
                 }
 
-                textarea{
+                textarea {
                     max-height: 500px;
                     min-height: 200px;
                     width: 300px;
+
+                    @include tablet {
+                        width: 80%;
+                    }
+                    @include mobile {
+                    }
                 }
 
-                button{
+                button {
                     color: themed('textColor');
                     background-color: themed('bg');
                     padding: 10px;

@@ -12,12 +12,27 @@
         background: themed('bg');
         gap: 50px;
 
+        @include tablet {
+            padding: 10px 50px;
+        }
+
+        @include mobile {
+            padding: 10px 50px;
+        }
 
         img {
-            height: 40rem;
+            width: 40rem;
             // width: 600px;
             object-fit: cover;
             border-radius: 10px;
+
+            @include tablet {
+                width: 30rem;
+            }
+
+            @include mobile {
+                width: 20rem;
+            }
 
         }
 
@@ -58,6 +73,17 @@
                 padding: 30px;
                 border: 1px solid themed('border');
                 border-radius: 10px;
+                min-width: 500px;
+
+                @include tablet {
+                    min-width: calc(100vw - 100px);
+
+                }
+
+                @include mobile {
+                    min-width: calc(100vw - 100px);
+
+                }
             }
 
             .description2,
@@ -94,9 +120,20 @@
                 padding: 10px;
                 border-radius: 10px;
                 cursor: pointer;
+
+                @include tablet {
+                    padding: 8px;
+                    font-size: 15px;
+                    border-radius: 5px;
+                }
+
+                @include mobile {
+                    padding: 5px;
+                    font-size: 10px;
+                }
             }
 
-            .editables{
+            .editables {
                 width: 100%;
                 display: flex;
                 flex-direction: row;

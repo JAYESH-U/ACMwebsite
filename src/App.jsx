@@ -9,7 +9,7 @@ import authService from './appwrite/auth';
 import events from './appwrite/events';
 import { storeEvents } from './store/eventSlice';
 import members from './appwrite/members';
-import { storeMemebrs } from './store/teamSlice';
+import { storeMembers } from './store/teamSlice';
 
 import Home from './pages/home/home';
 import About from './pages/about/About';
@@ -49,7 +49,7 @@ function App() {
 		members.getMembers()
 			.then((memberList) => {
 				if (memberList) {
-					dispatch(storeMemebrs(memberList.documents));
+					dispatch(storeMembers(memberList.documents));
 				} else {
 					console.log("Members found is zero");
 				}

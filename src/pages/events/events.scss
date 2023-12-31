@@ -12,24 +12,33 @@
         background-color: themed('bg');
         gap: 50px;
 
+        @include tablet{
+            gap: 20px;
+            padding: 20px;
+        }
+
         h1 {
             color: themed('textColor');
         }
 
-        .addEventButton {
+        .fullWidth {
             width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
 
-            p {
-                color: themed('textColor');
-                border-radius: 10px;
-                padding: 10px;
-                border: 1px solid themed('borderSoft');
+            .addEventButton {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    color: themed('textColor');
+                    border-radius: 10px;
+                    padding: 10px;
+                    border: 1px solid themed('borderSoft');
+
+                }
 
             }
-
         }
 
     }

@@ -8,5 +8,17 @@
         font-weight: 500;
         padding: 10px;
         border-radius: 10px;
+
+        
+        @include tablet{
+            padding: 8px;
+            font-size: 15px;
+            border-radius: 5px;
+        }
+        
+        @include mobile{
+            padding: 5px;
+            font-size: 10px;
+        }
     }
 }

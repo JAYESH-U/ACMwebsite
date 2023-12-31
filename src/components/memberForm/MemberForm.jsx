@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './memberForm.scss';
 import { useNavigate, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import members from "../../appwrite/members";
 import Loading from '../loading/Loading';
-import { Button } from '@mui/material';
-
+import { addMember, updateMember } from '../../store/teamSlice';
 
 function MemberForm({ member }) {
 
     const authStatus = useSelector((state) => state.auth.status);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [inputs, setInputs] = useState({
         name: '',
@@ -88,12 +88,14 @@ function MemberForm({ member }) {
 
             const dbMember = await members.updateMember(member.$id, {
                 ...data,
-                img: file ? file.$id : member.img,
+                img: file ? file.$id : undefined,
             });
 
             if (dbMember) {
+                dispatch(updateMember(dbMember));
+
                 navigate(`/member/${dbMember.$id}`);
-                window.location.reload();
+                // window.location.reload();
             }
         } else {
             const file = await members.uploadFile(data.img);
@@ -105,11 +107,11 @@ function MemberForm({ member }) {
                 console.log("dbMember : ", dbMember);
 
                 if (dbMember) {
-                    setTimeout(() => {
-                        console.log("File uploaded");
-                        navigate(`/member/${dbMember.$id}`);
-                        window.location.reload();
-                    }, 1000);
+                    dispatch(addMember(dbMember));
+
+                    console.log("File uploaded");
+                    navigate(`/member/${dbMember.$id}`);
+                    // window.location.reload();
                 }
             }
         }

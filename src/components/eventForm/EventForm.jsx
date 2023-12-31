@@ -1,14 +1,16 @@
 import React, { useCallback, useState } from "react";
 import events from "../../appwrite/events";
 import { useNavigate, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './eventForm.scss'
+import { addEvent, updateEvent } from "../../store/eventSlice";
 
 
 const EventForm = ({ event }) => {
     const authStatus = useSelector((state) => state.auth.status);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [inputs, setInputs] = useState({
         name: event?.name || '',
@@ -67,12 +69,14 @@ const EventForm = ({ event }) => {
 
             const dbEvent = await events.updateEvent(event.$id, {
                 ...data,
-                img: file ? file.$id : event.img,
+                img: file ? file.$id : undefined,
             });
 
             if (dbEvent) {
+                // Dispatch the updateEvent action to update the Redux store
+                dispatch(updateEvent(dbEvent));
+
                 navigate(`/event/${dbEvent.$id}`);
-                window.location.reload();
             }
         } else {
             const file = await events.uploadFile(data.img);
@@ -84,11 +88,12 @@ const EventForm = ({ event }) => {
                 console.log("dbPost : ", dbEvent);
 
                 if (dbEvent) {
-                    setTimeout(() => {
-                        console.log("File uploaded");
-                        navigate(`/event/${dbEvent.$id}`);
-                        window.location.reload();
-                    }, 1000);
+                    // Dispatch the addEvent action to add the new event to the store
+                    dispatch(addEvent(dbEvent));
+
+                    console.log("File uploaded");
+                    navigate(`/event/${dbEvent.$id}`);
+                    // window.location.reload();
                 }
             }
         }
@@ -127,7 +132,7 @@ const EventForm = ({ event }) => {
                     <button onClick={handleClick}>Submit</button>
                 </div>
                 <div className="formElements">
-                        {loading ? 'Submitting...' : null}
+                    {loading ? 'Submitting...' : null}
                 </div>
             </form>
         </div>

@@ -13,6 +13,10 @@
             padding: 0px 50px;
             border-bottom: 1px solid themed('border');
 
+            @include mobile {
+                padding: 0 10px;
+            }
+
             img {
                 width: 100%;
             }
@@ -37,6 +41,10 @@
             gap: 20px;
             border-bottom: 1px solid themed('border');
 
+            @include mobile {
+                padding: 10px;
+            }
+
             h2 {
                 font-weight: 700;
                 font-size: 40px;
@@ -59,6 +67,17 @@
                 font-size: 20px;
                 text-align: justify;
                 color: themed('textColor');
+
+                @include tablet {
+                    font-size: 14px;
+                    padding: 20px;
+                }
+
+                @include mobile {
+                    font-size: 12px;
+                    padding: 0 10px;
+
+                }
 
                 li {
                     margin: 0;

@@ -9,8 +9,13 @@
         justify-content: space-between;
         padding: 0px 50px;
         z-index: 999;
+        margin: 0;
         background-color: themed("bg");
         border-bottom: 1px solid themed('border');
+
+        @include mobile{
+            padding: 0 20px;
+        }
 
         .left {
             flex: 6;

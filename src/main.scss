@@ -77,20 +77,20 @@ $themes: (
     @return map-get($theme-map, $key);
 }
 
-@mixin smallmobile {
-    @media (max-width: 300px) {
+@mixin tablet {
+    @media (max-width: 900px) {
         @content;
     }
 }
 
 @mixin mobile {
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         @content;
     }
 }
 
-@mixin tablet {
-    @media (max-width: 900px) {
+@mixin smallmobile {
+    @media (max-width: 300px) {
         @content;
     }
 }
