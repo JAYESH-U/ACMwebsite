@@ -12,7 +12,7 @@ function Home() {
     return (
         <div className='home'>
             <About />
-            {/* <Teams /> */}
+            <Teams />
             {/* <Gallery /> */}
         </div>
     )
