@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.scss';
-import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Provider, useDispatch } from 'react-redux';
-import store from './store/store.js'
+import { Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { login, logout } from './store/authSlice';
 import { DarkModeContextProvider } from './context/DarkModeContext';
 import authService from './appwrite/auth';
@@ -11,22 +10,7 @@ import { storeEvents } from './store/eventSlice';
 import members from './appwrite/members';
 import { storeMembers } from './store/teamSlice';
 
-import Home from './pages/home/home';
-import About from './pages/about/About';
-import Teams from './pages/teams/Teams';
-import Events from './pages/events/Events';
-import Support from './pages/support/Support';
-import Admin from './pages/admin/Admin';
-import Login from './pages/login/Login';
-import EditEvent from './pages/editEvent/EditEvent';
-import AddEvent from './pages/addEvent/AddEvent';
-import AddMember from './pages/addMember/AddMember';
-import EditMember from './pages/editMember/EditMember';
-import MemberDetails from './pages/memberDetails/MemberDetails';
-
 import Navbar from './components/navbar/Navbar';
-import AuthLayout from './components/AuthLayout';
-import EventDetails from './pages/eventDetails/EventDetails';
 import Loading from './components/loading/Loading';
 
 function App() {
