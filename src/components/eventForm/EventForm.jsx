@@ -32,11 +32,15 @@ const EventForm = ({ event }) => {
 
         // For comma-separated values, split the string into an array
         const inputArrayValue = name === 'tags' || name === 'collabwith'
-            ? inputValue.split(',').map((item) => item.trim())
+            ? inputValue.split(',').map((item) => item.trim()).filter(Boolean)
             : inputValue;
 
-        // Update state with the selected file or text input value
-        setInputs((prev) => ({ ...prev, [name]: inputArrayValue }));
+        // Ignore empty values
+        if (inputArrayValue !== '') {
+            // Update state with the selected file or text input value
+            setInputs((prev) => ({ ...prev, [name]: inputArrayValue }));
+        }
+
     };
 
     const [loading, setLoading] = useState(false); // State variable for loading indicator

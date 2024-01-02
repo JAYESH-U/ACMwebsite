@@ -22,6 +22,8 @@ function EventDetails() {
     useEffect(() => {
         const foundEvent = eventList.find(event => event.$id === id);
         if (foundEvent) {
+            console.log(foundEvent.collabwith.length);
+            console.log(foundEvent.collabwith);
             setEvent(foundEvent);
         } else {
             navigate("/events");
@@ -56,6 +58,7 @@ function EventDetails() {
             }
         });
     };
+
 
     const today = new Date();
     const eventDate = new Date(event?.date || ''); // Make sure event.date is defined
@@ -98,22 +101,20 @@ function EventDetails() {
                     </div>
 
                     <div className="description3">
-                        <span>
-                            {isEventPassed ?
-                                '(Event Passed)' :
-                                <Button link={event.reglink} target={'_blank'} name={'Register'} />
-                            }
-                        </span>
+                        {isEventPassed ?
+                            <span> '(Event Passed)' </span>
+                            : <Button link={event.reglink} target={'_blank'} name={'Register'} />
+                        }
 
                         <Button link={`/events`} name={'back'} />
                     </div>
 
                     {authStatus && (
                         <div className="editables">
-                            <Button link={`/edit-event/${event.$id}`} name={'Edit'} />
                             <span className='eventLink' onClick={deleteEvent} >
                                 Delete
                             </span>
+                            <Button link={`/edit-event/${event.$id}`} name={'Edit'} />
                         </div>
                     )}
                 </div>

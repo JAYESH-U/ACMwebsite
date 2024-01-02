@@ -8,7 +8,7 @@ function EmailForm() {
     const form = useRef();
 
     const [loading, setLoading] = useState(false);
-    const [err, setErr] = useState(false);
+    const [err, setErr] = useState(null);
 
     const [inputs, setInputs] = useState({
         name: '',
@@ -27,6 +27,12 @@ function EmailForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Basic form validation
+        if (!inputs.name || !inputs.email || !inputs.message) {
+            setErr('Please fill in all the required fields.');
+            return;
+        }
+
         setLoading(true);
 
         var data = {
@@ -38,6 +44,7 @@ function EmailForm() {
                 from_email: inputs.email,
                 to_name: 'ACM manager',
                 message: inputs.message,
+                reply_to: inputs.email,
             }
         };
 
@@ -51,6 +58,7 @@ function EmailForm() {
                 message: '',
             });
             setLoading(false);
+            setErr(false)
         } catch (error) {
             console.log(error.text);
             setLoading(false);
@@ -68,18 +76,21 @@ function EmailForm() {
                 placeholder='Your name'
                 value={inputs.name}
                 onChange={handleChange}
+                required
             />
             <input type="email"
                 name="email"
                 placeholder='Your Email'
                 value={inputs.email}
                 onChange={handleChange}
+                required
             />
             <textarea
                 name="message"
                 placeholder='Message'
                 value={inputs.message}
                 onChange={handleChange}
+                required
             />
             <button type='submit'>Send Mail</button>
             {loading ? <span>Submitting...</span> : null}

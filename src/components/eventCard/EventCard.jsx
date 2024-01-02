@@ -18,19 +18,17 @@ function EventCard({ value: event }) {
             <div className="details">
                 <div className="description1">
                     <h3>{event.name}</h3>
-                    <p>{event.tags}</p>
+                    <p>{event.tags.join(', ')}</p>
                 </div>
                 <div className="description2">
                     <span><strong>Date: </strong>{formattedDate}</span>
                     <span><strong>Time: </strong>{formattedTime}</span>
                 </div>
                 <div className="description3">
-                    <span>
-                        {eventDate < today ?
-                            '(Event Passed)' :
-                            <Button link={event.reglink} target={'_blank'} name={'Register'} />
-                        }
-                    </span>
+                    {eventDate < today ?
+                        <span> '(Event Passed)' </span> :
+                        <Button link={event.reglink} target={'_blank'} name={'Register'} />
+                    }
                     <Button link={`/event/${event.$id}`} name={'Details'} />
                 </div>
             </div>
