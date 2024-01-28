@@ -1,9 +1,8 @@
 import React from 'react';
 import "./home.scss";
 import useTheme from '../../context/DarkModeContext';
-import Teams from '../teams/Teams.jsx';
-import About from '../about/About';
-import Gallery from '../../components/Gallery/Gallery';
+import { Teams } from '../index';
+import { AboutC, Gallery } from '../../components';
 
 function Home() {
 
@@ -11,7 +10,7 @@ function Home() {
 
     return (
         <div className='home'>
-            <About />
+            <AboutC />
             <Teams />
             {/* <Gallery /> */}
         </div>

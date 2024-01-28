@@ -2,7 +2,7 @@
 
 .support {
     @include themify($themes) {
-        height: calc(100vh - 85px);
+        min-height: calc(100vh - 85px);
         background-color: themed('bg');
         display: flex;
         flex-direction: column;

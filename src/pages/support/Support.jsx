@@ -4,8 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import authService from '../../appwrite/auth';
 import { logout } from '../../store/authSlice';
-import EmailForm from '../../components/emailForm/EmailForm';
-import Button from '../../components/button/Button';
+import {EmailForm, Button} from '../../components';
 
 function Support() {
 	const authStatus = useSelector(state => state.auth.status);

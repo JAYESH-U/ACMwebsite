@@ -3,7 +3,5 @@
 .addEventPage {
     @include themify($themes) {
         padding: 0;
-        background-color: themed('bg');
-        height: calc(100vh - 85px);
     }
 }

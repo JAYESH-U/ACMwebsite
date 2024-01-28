@@ -3,9 +3,10 @@
 .memberForm {
     @include themify($themes) {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         background-color: themed('bg');
+        min-height: calc(100vh - 85px);
 
         form {
             max-width: 50rem;

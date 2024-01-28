@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './editEvent.scss';
-import EventForm from '../../components/eventForm/EventForm';
+import { EventForm, Loading } from '../../components';
 import { useNavigate, useParams } from 'react-router-dom';
 import events from '../../appwrite/events';
-import Loading from '../../components/loading/Loading';
 
 
 function EditEvent() {

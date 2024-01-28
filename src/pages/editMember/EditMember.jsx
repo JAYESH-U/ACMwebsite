@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './editMember.scss';
-import MemberForm from '../../components/memberForm/MemberForm';
+import { MemberForm, Loading } from '../../components';
 import { useNavigate, useParams } from 'react-router-dom';
 import members from '../../appwrite/members';
-import Loading from '../../components/loading/Loading';
 
 function EditMember() {
 

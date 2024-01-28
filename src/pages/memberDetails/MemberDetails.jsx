@@ -3,9 +3,8 @@ import './memberDetails.scss';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import members from '../../appwrite/members';
-import Loading from '../../components/loading/Loading';
-import Button from '../../components/button/Button';
 import { deleteMember as deleteMemberFromStore } from '../../store/teamSlice';
+import {Loading, Button} from '../../components';
 
 
 // import pic from '../../assets/dummyImage.png';

@@ -3,10 +3,8 @@ import './teams.scss';
 // import pic from '../../assets/me.jpg';
 // import pic from '../../assets/dummyImage.png';
 // import sirpic from '../../assets/perurSir.jpg';
-import Team from '../../components/team/Team';
+import {Team, Button, Loading} from '../../components';
 import members from '../../appwrite/members';
-import Loading from '../../components/loading/Loading';
-import Button from '../../components/button/Button';
 import { useSelector } from 'react-redux';
 
 function Teams() {

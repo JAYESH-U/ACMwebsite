@@ -11,6 +11,7 @@
         padding: 50px;
         background-color: themed('bg');
         gap: 50px;
+        min-height: calc(100vh - 185px);
 
         @include tablet{
             gap: 20px;

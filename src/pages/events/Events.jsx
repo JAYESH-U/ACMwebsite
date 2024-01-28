@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import "./events.scss";
-import eventImg from '../../assets/event1.jpg';
-import dummyImage from '../../assets/dummyImage.png';
+// import eventImg from '../../assets/event1.jpg';
+// import dummyImage from '../../assets/dummyImage.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeEvents } from '../../store/eventSlice';
-import EventCard from '../../components/eventCard/EventCard';
 import events from '../../appwrite/events';
-import Loading from '../../components/loading/Loading';
-import Button from '../../components/button/Button';
+
+import {EventCard, Loading, Button} from '../../components';
 
 function Events() {
 

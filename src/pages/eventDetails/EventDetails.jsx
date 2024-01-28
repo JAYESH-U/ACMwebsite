@@ -4,8 +4,7 @@ import './eventDetails.scss';
 import { useSelector, useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import events from '../../appwrite/events';
-import Loading from "../../components/loading/Loading";
-import Button from "../../components/button/Button";
+import { Loading, Button } from "../../components";
 import { deleteEvent as deleteEventFromStore } from "../../store/eventSlice";
 
 function EventDetails() {

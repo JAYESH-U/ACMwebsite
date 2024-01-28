@@ -1,0 +1,108 @@
+@import '../../main.scss';
+
+.info {
+    @include themify($themes) {
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: themed("bg");
+
+
+        .banner {
+            padding: 0px 50px;
+            border-bottom: 1px solid themed('border');
+
+            @include mobile {
+                padding: 0 10px;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 50%;
+            }
+        }
+
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            gap: 20px;
+            border-bottom: 1px solid themed('border');
+
+            @include mobile {
+                padding: 10px;
+            }
+
+            h2 {
+                font-weight: 700;
+                font-size: 40px;
+                color: themed('textColorSoft');
+
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 20px;
+                text-align: justify;
+                color: themed('textColor');
+
+            }
+
+            ul {
+                list-style: none;
+                padding: 50px;
+                font-weight: 500;
+                font-size: 20px;
+                text-align: justify;
+                color: themed('textColor');
+
+                @include tablet {
+                    font-size: 14px;
+                    padding: 20px;
+                }
+
+                @include mobile {
+                    font-size: 12px;
+                    padding: 0 10px;
+
+                }
+
+                li {
+                    margin: 0;
+                    margin-bottom: 1em;
+                    padding-left: 1.5em;
+                    position: relative;
+
+                    &:after {
+                        content: '';
+                        height: .4em;
+                        width: .4em;
+                        background: themed('textColorSoft');
+                        display: block;
+                        position: absolute;
+                        transform: rotate(45deg);
+                        top: 50%;
+                        /* Adjusted to center vertically */
+                        left: 0;
+                        margin-top: -0.2em;
+                        /* Half of the height to truly center */
+                    }
+                }
+            }
+
+        }
+    }
+}

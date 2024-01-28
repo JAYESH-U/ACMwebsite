@@ -1,5 +1,5 @@
 import React from 'react'
-import MemberForm from '../../components/memberForm/MemberForm'
+import { MemberForm } from '../../components'
 
 function AddMember() {
 	return (
