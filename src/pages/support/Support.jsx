@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import authService from '../../appwrite/auth';
 import { logout } from '../../store/authSlice';
-import {EmailForm, Button} from '../../components';
+import {EmailForm, Button, LogoutButton} from '../../components';
 
 function Support() {
 	const authStatus = useSelector(state => state.auth.status);
@@ -15,7 +15,8 @@ function Support() {
 			<div className="buttons">
 				{!authStatus
 					? <Button link={`/login`} name={'Login'} />
-					: <Button link={`/admin`} name={'Admin page'} />
+					// : <Button link={`/admin`} name={'Admin page'} />
+					: <LogoutButton />
 				}
 			</div>
 

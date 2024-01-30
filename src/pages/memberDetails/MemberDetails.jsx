@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import members from '../../appwrite/members';
 import { deleteMember as deleteMemberFromStore } from '../../store/teamSlice';
-import {Loading, Button} from '../../components';
+import { Loading, Button } from '../../components';
 
 
 // import pic from '../../assets/dummyImage.png';
@@ -49,18 +49,25 @@ function MemberDetails() {
 
     //delete event...
     const deleteMember = () => {
-        members.deleteMember(member.$id).then((status) => {
-            if (status) {
-                members.deleteFile(member.img);
+        // Show confirmation dialog before deletion
+        const confirmDelete = window.confirm('Are you sure you want to delete this Member?');
 
-                dispatch(deleteMemberFromStore(member.$id));
+        // If user confirms deletion, proceed with deletion logic
+        if (confirmDelete) {
+            members.deleteMember(member.$id)
+                .then((status) => {
+                    if (status) {
+                        members.deleteFile(member.img);
 
-                navigate("/team");
-                // window.location.reload();
-            }
-        })
-            .catch(err => setErr(err));
-    };
+                        dispatch(deleteMemberFromStore(member.$id));
+
+                        navigate("/team");
+                        // window.location.reload();
+                    }
+                })
+                .catch(err => setErr(err));
+        };
+    }
 
     // console.log(member);
 

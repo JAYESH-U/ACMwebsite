@@ -5,9 +5,10 @@
         padding: 50px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         flex-direction: column;
         background-color: themed('bg');
+        height: 100vh;
 
         @include tablet {
             padding: 20px;

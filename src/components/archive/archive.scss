@@ -1,0 +1,59 @@
+@import '../../main.scss';
+
+.archive {
+    @include themify($themes) {
+        flex: 3;
+        border: 1px solid themed('border');
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        gap: 10px;
+        border-radius: 10px;
+        min-width: 200px;
+
+        h3 {
+            color: themed('textColor');
+            text-align: center;
+        }
+
+        p {
+            color: themed('textColorSoft');
+            font-weight: 500;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+
+            strong {
+                color: themed('textColor');
+            }
+        }
+
+        .description {
+            height: 40px;
+            width: 20vw;
+            white-space: wrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .editables {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+
+            span {
+                color: themed('textColor');
+                font-weight: 500;
+                font-size: 0.8rem;
+                border: 1px solid themed('border');
+                padding: 8px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+
+    }
+}

@@ -2,6 +2,7 @@ import About from "./about/About";
 import AddEvent from "./addEvent/AddEvent";
 import AddMember from "./addMember/AddMember";
 import Admin from "./admin/Admin";
+import Arvhives from "./archives/Archives";
 import EditEvent from "./editEvent/EditEvent";
 import EditMember from "./editMember/EditMember";
 import EventDetails from "./eventDetails/EventDetails";
@@ -18,6 +19,7 @@ export {
     AddEvent,
     AddMember,
     Admin,
+    Arvhives,
     EditEvent,
     EditMember,
     EventDetails,

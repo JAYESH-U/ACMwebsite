@@ -46,15 +46,20 @@ function Navbar() {
             active: true,
         },
         {
+            name: "Archives",
+            link: "/archives",
+            active: authStatus,
+        },
+        {
             name: "Support",
             link: "/support",
             active: true,
         },
-        {
-            name: "Admin",
-            link: "/admin",
-            active: authStatus,
-        },
+        // {
+        //     name: "Admin",
+        //     link: "/admin",
+        //     active: authStatus,
+        // },
     ];
 
     const toggleNav = () => {

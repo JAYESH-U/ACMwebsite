@@ -67,7 +67,7 @@
                 position: absolute;
                 top: 0;
                 right: -100%; // Use percentage for flexibility
-                height: 100vh;
+                height: calc(100vh - 85px);
                 width: 30%;
                 display: none;
                 flex-direction: column;

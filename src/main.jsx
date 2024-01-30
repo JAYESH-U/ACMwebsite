@@ -6,19 +6,22 @@ import { Provider } from 'react-redux'
 import store from './store/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
-import Login from './pages/login/Login.jsx';
-import Home from './pages/home/Home.jsx';
-import About from './pages/about/About.jsx'
-import Events from './pages/events/Events.jsx'
-import Admin from './pages/admin/Admin.jsx'
-import EditEvent from './pages/editEvent/EditEvent.jsx'
-import AddEvent from './pages/addEvent/AddEvent.jsx'
-import EventDetails from './pages/eventDetails/EventDetails.jsx'
-import EditMember from './pages/editMember/EditMember.jsx'
-import AddMember from './pages/addMember/AddMember.jsx'
-import MemberDetails from './pages/memberDetails/MemberDetails.jsx'
-import Teams from './pages/teams/Teams.jsx'
-import Support from './pages/support/Support.jsx'
+import {
+	About,
+	AddEvent,
+	AddMember,
+	Admin,
+	Arvhives,
+	EditEvent,
+	EditMember,
+	EventDetails,
+	Events,
+	Home,
+	Login,
+	MemberDetails,
+	Support,
+	Teams,
+} from './pages';
 
 import AuthLayout from './components/AuthLayout.jsx';
 
@@ -59,14 +62,18 @@ const router = createBrowserRouter([
 				element: <Support />
 			},
 			{
-				path: '/admin',
-				element: (
-					<AuthLayout authentication>
-						{" "}
-						<Admin />
-					</AuthLayout>
-				)
+				path: '/archives',
+				element: <Arvhives />
 			},
+			// {
+			// 	path: '/admin',
+			// 	element: (
+			// 		<AuthLayout authentication>
+			// 			{" "}
+			// 			<Admin />
+			// 		</AuthLayout>
+			// 	)
+			// },
 			{
 				path: '/edit-event/:id',
 				element: (

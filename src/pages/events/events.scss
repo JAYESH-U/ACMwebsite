@@ -16,6 +16,7 @@
         @include tablet{
             gap: 20px;
             padding: 20px;
+            min-height: calc(100vh - 85px);
         }
 
         h1 {

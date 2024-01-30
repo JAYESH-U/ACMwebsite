@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import events from '../../appwrite/events';
 import { Loading, Button } from "../../components";
-import { deleteEvent as deleteEventFromStore } from "../../store/eventSlice";
+import { deleteEvent } from "../../store/eventSlice";
 
 function EventDetails() {
     const [event, setEvent] = useState(null);
@@ -44,18 +44,24 @@ function EventDetails() {
 
 
     //delete event...
-    const deleteEvent = () => {
-        events.deleteEvent(event.$id).then((status) => {
-            if (status) {
-                events.deleteFile(event.img);
+    const handleDelete = () => {
+        // Show confirmation dialog before deletion
+        const confirmDelete = window.confirm('Are you sure you want to delete this Event?');
 
-                // Dispatch the deleteEvent action to update the Redux store
-                dispatch(deleteEventFromStore(event.$id));
+        // If user confirms deletion, proceed with deletion logic
+        if (confirmDelete) {
+            events.deleteEvent(event.$id).then((status) => {
+                if (status) {
+                    events.deleteFile(event.img);
 
-                navigate("/events");
-                // window.location.reload();
-            }
-        });
+                    // Dispatch the deleteEvent action to update the Redux store
+                    dispatch(deleteEvent(event.$id));
+
+                    navigate("/events");
+                    // window.location.reload();
+                }
+            });
+        }
     };
 
 
@@ -110,7 +116,7 @@ function EventDetails() {
 
                     {authStatus && (
                         <div className="editables">
-                            <span className='eventLink' onClick={deleteEvent} >
+                            <span className='eventLink' onClick={handleDelete} >
                                 Delete
                             </span>
                             <Button link={`/edit-event/${event.$id}`} name={'Edit'} />

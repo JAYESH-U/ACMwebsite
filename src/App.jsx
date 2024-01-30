@@ -6,9 +6,11 @@ import { login, logout } from './store/authSlice';
 import { DarkModeContextProvider } from './context/DarkModeContext';
 import authService from './appwrite/auth';
 import events from './appwrite/events';
-import { storeEvents } from './store/eventSlice';
 import members from './appwrite/members';
+import archives from './appwrite/archives';
+import { storeEvents } from './store/eventSlice';
 import { storeMembers } from './store/teamSlice';
+import { storeArchives } from './store/archiveSlice';
 
 import Navbar from './components/navbar/Navbar';
 import Loading from './components/loading/Loading';
@@ -46,7 +48,17 @@ function App() {
 					dispatch(storeEvents(eventList.documents));
 				}
 			})
-			.catch((err) => console.log('errors finding events : ', err))
+			.catch((err) => console.log('errors finding events : ', err));
+
+		archives.getArchives()
+			.then((archiveList) => {
+				if (archiveList) {
+					dispatch(storeArchives(archiveList.documents));
+				} else {
+					console.log("Archives found is zero");
+				}
+			})
+			.catch((err) => console.log('errors finding archives : ', err))
 			.finally(() => setLoading(false));
 	}, [dispatch]);
 
