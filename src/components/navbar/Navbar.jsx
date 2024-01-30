@@ -48,7 +48,7 @@ function Navbar() {
         {
             name: "Archives",
             link: "/archives",
-            active: authStatus,
+            active: true,
         },
         {
             name: "Support",

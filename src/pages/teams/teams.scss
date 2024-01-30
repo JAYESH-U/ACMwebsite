@@ -8,14 +8,17 @@
         justify-content: flex-start;
         flex-direction: column;
         background-color: themed('bg');
-        height: 100vh;
+        min-height: 100vh;
+        padding-bottom: 50px;
 
         @include tablet {
             padding: 20px;
+            padding-bottom: 50px;
         }
 
         @include mobile {
             padding: 10px;
+            padding-bottom: 50px;
         }
 
         h1 {
