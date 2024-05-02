@@ -6,7 +6,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         background-color: themed("bg");
         min-height: calc(100vh - 185px);
 
@@ -31,6 +31,7 @@
 
             img {
                 width: 50%;
+                max-width: 500px;
             }
         }
 

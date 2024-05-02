@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import "./navbar.scss";
+// import "./navbar.scss";
+import "./navbar1.scss";
 import { Link, useNavigate } from 'react-router-dom';
 import acmLogo from '../../assets/ACMlogo.png';
 import useTheme from '../../context/DarkModeContext';
@@ -17,7 +18,7 @@ function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const onclick = (e) => {
-        console.log('dark ',darkMode);
+        console.log('dark ', darkMode);
         toggle();
     }
 
@@ -65,7 +66,7 @@ function Navbar() {
     const toggleNav = () => {
         setIsMenuOpen(!isMenuOpen);
     }
-    console.log('navbar',isMenuOpen);
+    console.log('navbar', isMenuOpen);
 
     return (
         <>
@@ -76,18 +77,26 @@ function Navbar() {
                     </Link>
                 </div>
                 <div className={`center ${isMenuOpen ? 'open' : 'close'}`}>
-                    <span className="closeMenu navItems" onClick={toggleNav}><CloseIcon /></span>
                     {navItems.map((item) =>
                         item.active
                         && <span key={item.link} className='navItems' onClick={() => navigate(item.link)}>
                             {item.name}
                         </span>
                     )}
-                    <span className='navItems'>
-                        {darkMode ? <DarkModeOutlinedIcon onClick={onclick} /> : <WbSunnyOutlinedIcon onClick={onclick} />}
-                    </span>
                 </div>
-                <span className="menu navItems" onClick={toggleNav}><MenuIcon /></span>
+                <div className="right">
+                    <span className='navItems'>
+                        {darkMode
+                            ? <DarkModeOutlinedIcon className='darkMode' onClick={onclick} />
+                            : <WbSunnyOutlinedIcon className='darkMode' onClick={onclick} />
+                        }
+                    </span>
+
+                    {isMenuOpen
+                        ? <span className={`closeMenu navItems ${isMenuOpen ? 'active' : 'inActive'}`} onClick={toggleNav}><CloseIcon /></span>
+                        : <span className={`menu navItems ${isMenuOpen ? 'inActive' : 'active'}`} onClick={toggleNav}><MenuIcon /></span>
+                    }
+                </div>
             </div>
         </>
     );

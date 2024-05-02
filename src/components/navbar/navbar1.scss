@@ -1,0 +1,151 @@
+@import '../../main.scss';
+
+.navbar {
+    @include themify($themes) {
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 50px;
+        z-index: 999;
+        margin: 0;
+        background-color: themed("bg");
+        border-bottom: 1px solid themed('border');
+        color: themed('textColor');
+        gap: 10px;
+        transition: all 2s ease-in-out;
+
+        @include tablet {
+            padding: 0 20px;
+            position: sticky;
+        }
+
+        .navItems {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .left {
+            flex: 2;
+
+            img {
+                height: 80px;
+                width: 80px;
+                object-fit: cover;
+            }
+        }
+
+        .center {
+            position: relative;
+            display: flex;
+            flex: 6;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            position: relative;
+
+            @include tablet {
+                flex-direction: column;
+                position: absolute;
+                top: 85px;
+                right: 0px;
+                background-color: themed('bg');
+                min-width: 150px;
+                width: 30%;
+                max-width: 500px;
+                height: calc(100vh - 185px);
+                align-items: flex-end;
+                justify-content: flex-start;
+                padding: 20px;
+                transition: right 2s ease-in-out;
+
+                &.close {
+                    display: none;
+                    right: 500px;
+                }
+
+                &.open {
+                    display: flex;
+                    right: 0px;
+                }
+
+                // transition: transform 0.3s ease-in-out; /* Example transition property */
+                
+                // &.open {
+                //     transform: translateX(0); /* Slide in */
+                // }
+                
+                // &.close {
+                //     transform: translateX(100%); /* Slide out */
+                // }
+                
+            }
+
+        }
+
+        span {
+            z-index: 999;
+            font-weight: 600;
+            font-size: 20px;
+            color: themed('textColor');
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+                color: gray;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex: 2;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 30px;
+            flex-direction: row;
+
+            .navItems {
+                width: 25px;
+                height: 25px;
+            }
+
+            .closeMenu {
+                display: none;
+                left: 20px;
+                color: themed('logo');
+                border: 1px solid themed('logo');
+                text-align: center;
+                align-self: center;
+                border-radius: 50%;
+
+                @include tablet {
+                    &.active {
+                        display: block;
+
+                    }
+                }
+
+            }
+
+            .menu {
+                display: none;
+                color: themed('logo');
+                font-size: 40px;
+
+                @include tablet {
+                    &.active {
+                        display: flex;
+                        text-align: center;
+                        align-self: center;
+
+                    }
+                }
+
+            }
+        }
+    }
+}
