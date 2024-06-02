@@ -134,6 +134,7 @@ const EventForm = ({ event }) => {
                 </div>
                 <div className="formElements">
                     <button onClick={handleClick}>Submit</button>
+                    <button onClick={() => navigate(`/event/${event.$id}`)}>Back</button>
                 </div>
                 <div className="formElements">
                     {loading ? 'Submitting...' : null}
