@@ -47,8 +47,8 @@
             }
 
             @include mobile {
-                height: 15rem;
-                width: 15rem;
+                height: 18rem;
+                width: 18rem;
             }
         }
 
@@ -59,6 +59,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+            width: 100%;
 
             @include tablet {
                 gap: 15px;
@@ -85,9 +86,9 @@
                         font-size: 20px;
                     }
 
-                    @include mobile {
-                        font-size: 15px;
-                    }
+                    // @include mobile {
+                    //     font-size: 15px;
+                    // }
 
                 }
 
@@ -96,11 +97,11 @@
                     font-weight: 500;
 
                     @include tablet {
-                        font-size: 10px;
+                        font-size: 15px;
                     }
 
                     @include mobile {
-                        font-size: 10px;
+                        font-size: 15px;
                     }
 
                 }
@@ -119,11 +120,11 @@
                 margin-bottom: 5px;
 
                 @include tablet {
-                    gap: 10px;
+                    gap: 15px;
                 }
 
                 @include mobile {
-                    gap: 10px;
+                    gap: 15px;
                 }
 
 
@@ -132,11 +133,11 @@
                     font-weight: 500;
 
                     @include tablet {
-                        font-size: 15px;
+                        font-size: 12px;
                     }
 
                     @include mobile {
-                        font-size: 10px;
+                        font-size: 12px;
                     }
 
                     strong {

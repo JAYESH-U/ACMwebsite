@@ -17,7 +17,7 @@
         }
 
         @include mobile {
-            padding: 10px 50px;
+            padding: 10px 30px;
         }
 
         img {
@@ -48,7 +48,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-
+            width: inherit;
 
             .description1 {
                 display: flex;
@@ -85,12 +85,12 @@
                 }
 
                 @include mobile {
-                    min-width: calc(100vw - 100px);
-
+                    min-width: calc(100vw - 160px);
                 }
 
                 @include mobile {
-                    font-size: 10px;
+                    padding: 10px;
+                    font-size: 12px;
                 }
             }
 
@@ -149,6 +149,10 @@
                 gap: 10;
                 align-items: center;
 
+                span{
+                    padding: 5px;
+                    font-size: 15px;
+                }
             }
 
         }

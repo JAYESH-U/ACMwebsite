@@ -6,12 +6,12 @@
         flex-direction: column;
         align-items: center;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-start;
         // margin: 20px;
         padding: 50px 100px;
         background: themed('bg');
         gap: 50px;
-        min-height: calc(100vh - 185px);
+        min-height: calc(100vh - 127px);
 
         @include tablet {
             gap: 30px;
@@ -133,6 +133,10 @@
             justify-content: space-around;
             margin-top: 20px;
 
+            button{
+                padding: 5px;
+                font-size: 15px;
+            }
         }
 
         .eventLink {
